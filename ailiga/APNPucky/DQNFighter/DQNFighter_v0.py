@@ -58,6 +58,8 @@ class DQNFighter_v0(TrainedFighter):
             if isinstance(env.observation_space, gym.spaces.Dict)
             else env.observation_space
         )
+        print(observation_space, observation_space.shape or observation_space.n)
+        print(env.action_space.shape or env.action_space.n)
         net = Net(
             state_shape=observation_space.shape or observation_space.n,
             action_shape=env.action_space.shape or env.action_space.n,
@@ -93,7 +95,10 @@ class DQNFighter_v0(TrainedFighter):
 
         # ======== Step 2: Agent setup =========
         # policy, optim, agents = _get_agents()
-        agents = [RandomPolicy(), self.policy]
+        agents = [
+            *[RandomPolicy() for _ in range(len(self.env.agents) - 1)],
+            self.policy,
+        ]
         policy = MultiAgentPolicyManager(agents, self.env)
         agents = self.env.agents
 
@@ -111,19 +116,19 @@ class DQNFighter_v0(TrainedFighter):
 
         # ======== Step 4: Callback functions setup =========
         def save_best_fn(policy):
-            torch.save(policy.policies[agents[1]].state_dict(), savefile)
+            torch.save(policy.policies[agents[-1]].state_dict(), savefile)
 
         def stop_fn(mean_rewards):
             return mean_rewards >= self.reward_threshold
 
         def train_fn(epoch, env_step):
-            policy.policies[agents[1]].set_eps(self.train_eps)
+            policy.policies[agents[-1]].set_eps(self.train_eps)
 
         def test_fn(epoch, env_step):
-            policy.policies[agents[1]].set_eps(self.test_eps)
+            policy.policies[agents[-1]].set_eps(self.test_eps)
 
         def reward_metric(rews):
-            return rews[:, 1]
+            return rews[:, -1]
 
         result = offpolicy_trainer(
             policy=policy,
