@@ -24,6 +24,16 @@ Currently, the implementation through `tianshou.BasePolicy` seems to only suppor
 tensorboard --logdir log/ --load_fast=false
 ```
 
+## Installation
+
+```sh
+poerty install
+poetry shell
+```
+
 ## Testing and Training
 
-Currently training/testing fighters works through the fighter tests.
+Currently, training/testing fighters works through the fighter tests.
+```sh
+python tests/test_dqn_fighter.py
+```
