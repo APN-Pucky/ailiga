@@ -4,19 +4,27 @@ from typing import Optional, Tuple
 import gym
 import numpy as np
 import torch
+from pettingzoo.classic import rps_v2, tictactoe_v3
 from tianshou.data import Collector, VectorReplayBuffer
 from tianshou.env import DummyVectorEnv, PettingZooEnv
 from tianshou.env.pettingzoo_env import PettingZooEnv
 from tianshou.policy import BasePolicy, DQNPolicy, MultiAgentPolicyManager, RandomPolicy
 from tianshou.trainer import offpolicy_trainer
+from tianshou.utils import TensorboardLogger
 from tianshou.utils.net.common import Net
+from torch.utils.tensorboard import SummaryWriter
 
-from ailiga.agent import Agent
+from ailiga.Fighter import Fighter
+from ailiga.TrainedFighter import TrainedFighter
 
 
-class DQNAgent(Agent):
+class DQNFighter_v0(TrainedFighter):
+    def compatible_envs(self):
+        return ["tictactoe_v3"]
+
     def __init__(self, lambda_env, savefile=None):
         super().__init__(lambda_env)
+        device = "cuda" if torch.cuda.is_available() else "cpu"
         self.env = lambda_env()
         env = self.env
         observation_space = (
@@ -28,8 +36,8 @@ class DQNAgent(Agent):
             state_shape=observation_space.shape or observation_space.n,
             action_shape=env.action_space.shape or env.action_space.n,
             hidden_sizes=[128, 128, 128, 128],
-            device="cuda" if torch.cuda.is_available() else "cpu",
-        ).to("cuda" if torch.cuda.is_available() else "cpu")
+            device=device,
+        ).to(device)
         optim = torch.optim.Adam(net.parameters(), lr=1e-4)
         agent_learn = DQNPolicy(
             model=net,
@@ -39,13 +47,9 @@ class DQNAgent(Agent):
             target_update_freq=320,
         )
         self.policy = agent_learn
-        if savefile is not None:
-            self.load(savefile)
+        self.load(savefile)
 
-    def load(self, savefile="dqn_agent.pth"):
-        self.policy.load_state_dict(torch.load(savefile))
-
-    def train(self, savefile="dqn_agent.pth"):
+    def train(self, savefile="trained/DQNFigher_v0.pth"):
         train_envs = DummyVectorEnv([self.lambda_env for _ in range(10)])
         test_envs = DummyVectorEnv([self.lambda_env for _ in range(10)])
 
@@ -107,6 +111,7 @@ class DQNAgent(Agent):
             update_per_step=0.1,
             test_in_train=False,
             reward_metric=reward_metric,
+            logger=self.get_logger(),
         )
         torch.save(self.policy.state_dict(), savefile)
 

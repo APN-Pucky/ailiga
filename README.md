@@ -11,3 +11,10 @@ Build of package based on:
 * https://github.com/vwxyzjn/cleanrl
 * https://github.com/Farama-Foundation/Gymnasium
 * https://github.com/deepmind/open_spiel
+
+
+## Tensorboard
+
+```sh
+tensorboard --logdir log/ --load_fast=false
+```
