@@ -10,7 +10,7 @@ class Fighter:
 
     def assert_env(self):
         name = self.get_env_name()
-        if name not in self.compatible_envs():
+        if self.compatible_envs() is not True and name not in self.compatible_envs():
             warnings.warn(
                 f"env {name} is not compatible with {self.__class__.__name__}"
             )

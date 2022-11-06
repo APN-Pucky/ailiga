@@ -18,3 +18,7 @@ Build of package based on:
 ```sh
 tensorboard --logdir log/ --load_fast=false
 ```
+
+## Testing and Training
+
+Currently training/testing fighters works through the fighter tests.
