@@ -12,6 +12,8 @@ from ailiga.Fighter import Fighter
 
 class TrainedFighter(Fighter):
     logdir = "log"
+    traindir = "trained"
+    user = None
 
     def load(self, savefile=None):
         if savefile is None:
@@ -22,8 +24,20 @@ class TrainedFighter(Fighter):
         else:
             return False
 
+    def get_user(self):
+        return self.user
+
     def get_default_savefile(self):
-        name = "trained/" + self.get_env_name() + "/" + self.__class__.__name__ + ".pth"
+        name = (
+            self.traindir
+            + "/"
+            + self.get_env_name()
+            + "/"
+            + self.get_user()
+            + "/"
+            + self.__class__.__name__
+            + ".pth"
+        )
         pathlib.Path(name).parent.mkdir(parents=True, exist_ok=True)
         return name
 
@@ -31,6 +45,7 @@ class TrainedFighter(Fighter):
         log_path = os.path.join(
             self.logdir,
             self.get_env_name(),
+            self.get_user(),
             self.__class__.__name__,
             time.strftime("%Y%m%d%H%M%S"),
         )

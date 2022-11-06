@@ -19,6 +19,7 @@ from ailiga.TrainedFighter import TrainedFighter
 
 
 class DQNFighter_v0(TrainedFighter):
+    user = "APNPucky"
 
     # https://tianshou.readthedocs.io/en/master/tutorials/dqn.html
     max_epoch = 50
