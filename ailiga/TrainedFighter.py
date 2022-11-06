@@ -1,4 +1,5 @@
 import os
+import pathlib
 import time
 import uuid
 
@@ -22,7 +23,9 @@ class TrainedFighter(Fighter):
             return False
 
     def get_default_savefile(self):
-        return "trained/" + self.get_env_name() + "/" + self.__class__.__name__ + ".pth"
+        name = "trained/" + self.get_env_name() + "/" + self.__class__.__name__ + ".pth"
+        pathlib.Path(name).parent.mkdir(parents=True, exist_ok=True)
+        return name
 
     def get_logger(self):
         log_path = os.path.join(

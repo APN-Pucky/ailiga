@@ -11,14 +11,13 @@ from tianshou.env.pettingzoo_env import PettingZooEnv
 from tianshou.policy import BasePolicy, DQNPolicy, MultiAgentPolicyManager, RandomPolicy
 from tianshou.trainer import offpolicy_trainer
 from tianshou.utils import TensorboardLogger
-from tianshou.utils.net.common import Net
-from torch.utils.tensorboard import SummaryWriter
+from tianshou.utils.net.common import Net, Recurrent
 
 from ailiga.Fighter import Fighter
 from ailiga.TrainedFighter import TrainedFighter
 
 
-class DQNFighter_v0(TrainedFighter):
+class DRDQNFighter_v0(TrainedFighter):
 
     # https://tianshou.readthedocs.io/en/master/tutorials/dqn.html
     max_epoch = 50
@@ -36,10 +35,13 @@ class DQNFighter_v0(TrainedFighter):
     training_num = 10
     test_num = 10
 
+    layer_num = 2
+
     lr = 1e-4
 
     train_eps = 0.1
     test_eps = 0.05
+
     gamma = 0.9
     n_step = 3
     target_update_freq = 320
@@ -57,11 +59,11 @@ class DQNFighter_v0(TrainedFighter):
             if isinstance(env.observation_space, gym.spaces.Dict)
             else env.observation_space
         )
-        net = Net(
-            state_shape=observation_space.shape or observation_space.n,
-            action_shape=env.action_space.shape or env.action_space.n,
-            hidden_sizes=self.hidden_sizes,
-            device=device,
+        net = Recurrent(
+            self.layer_num,
+            observation_space.shape or observation_space.n,
+            env.action_space.shape or env.action_space.n,
+            device,
         ).to(device)
         optim = torch.optim.Adam(net.parameters(), lr=self.lr)
         agent_learn = DQNPolicy(
@@ -97,7 +99,7 @@ class DQNFighter_v0(TrainedFighter):
         train_collector = Collector(
             policy,
             train_envs,
-            VectorReplayBuffer(self.buffer_size, len(train_envs)),
+            VectorReplayBuffer(self.buffer_size, len(train_envs), stack_num=4),
             exploration_noise=True,
         )
         test_collector = Collector(policy, test_envs, exploration_noise=True)

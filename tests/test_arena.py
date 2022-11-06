@@ -24,7 +24,7 @@ def test_dqn_random_arena():
         lenv,
         [
             RandomFighter_v0(lenv),
-            DQNFighter_v0(lenv, "dqn_agent.pth"),
+            DQNFighter_v0(lenv),
         ],
     )
     arena.fight(10000)

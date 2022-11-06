@@ -1,6 +1,7 @@
 import os
 
 import gym
+import numpy as np
 import torch
 from pettingzoo.classic import rps_v2, tictactoe_v3
 from tianshou.data import Collector, VectorReplayBuffer
@@ -19,15 +20,13 @@ from tianshou.utils.net.common import ActorCritic, Net
 from tianshou.utils.net.discrete import Actor, Critic
 from torch.utils.tensorboard import SummaryWriter
 
-from ailiga import TrainedFighter
 from ailiga.Fighter import Fighter
+from ailiga.TrainedFighter import TrainedFighter
 
 
 class PPOFighter_v0(TrainedFighter):
 
-    training_num = 10
-    test_num = 10
-    hidden_sizes = [64, 64]
+    # https://tianshou.readthedocs.io/en/master/tutorials/dqn.html
     buffer_size = 20_000
 
     lr = 3e-4
@@ -43,11 +42,14 @@ class PPOFighter_v0(TrainedFighter):
     norm_adv = 0
     recompute_adv = 0
 
-    reward_threshold = None
+    hidden_sizes = [64, 64]
+
+    reward_threshold = 100
 
     epoch = 10
     step_per_epoch = 50_000
     repeat_per_collect = 10
+    training_num = 20
     test_num = 100
     batch_size = 64
     step_per_collect = 2000
@@ -113,6 +115,14 @@ class PPOFighter_v0(TrainedFighter):
         train_envs = DummyVectorEnv([self.lambda_env for _ in range(self.training_num)])
         # test_envs = gym.make(args.task)
         test_envs = DummyVectorEnv([self.lambda_env for _ in range(self.test_num)])
+
+        # seed
+        seed = 1
+        np.random.seed(seed)
+        torch.manual_seed(seed)
+        train_envs.seed(seed)
+        test_envs.seed(seed)
+
         # collector
         train_collector = Collector(
             self.policy,
