@@ -86,8 +86,8 @@ def test_simple_spread():
 
     env = simple_spread_v2.parallel_env()
     # env = aec_to_parallel(env)
-    env = ss.pettingzoo_env_to_vec_env_v0(env)
-    env = ss.concat_vec_envs_v0(env, 1, num_cpus=1, base_class="stable_baselines3")
+    env = ss.pettingzoo_env_to_vec_env_v1(env)
+    env = ss.concat_vec_envs_v1(env, 1, num_cpus=1, base_class="stable_baselines3")
 
     # check_env(env)
 

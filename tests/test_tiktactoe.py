@@ -1,8 +1,8 @@
 import tqdm
 from pettingzoo.classic import tictactoe_v3
 
-from ailiga.APNPucky.PPOAgent import PPOAgent, train_ppo
-from ailiga.APNPucky.randomAgent import RandomAgent
+# from ailiga.APNPucky.PPOAgent import PPOAgent, train_ppo
+from ailiga.APNPucky.randomAgent_v0 import RandomAgent
 from ailiga.APNPucky.randomLegalAgent import RandomLegalAgent
 
 
@@ -50,4 +50,5 @@ def test_train_ppo():
     train_ppo(env)
 
 
-test_train_ppo()
+test_randoms()
+# test_train_ppo()

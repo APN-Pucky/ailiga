@@ -51,7 +51,9 @@ class PPOAgent(nn.Module, Agent):
 def batchify_obs(obs, device):
     """Converts PZ style observations to batch of torch arrays."""
     # convert to list of np arrays
-    obs = np.stack([obs[a] for a in obs], axis=0)
+    # obs = np.stack([obs[a] for a in obs], axis=0)
+    print(f"obs.shape: {obs.shape}")
+    print(f"{obs=}")
     # transpose to be (batch, channel, height, width)
     # obs = obs.transpose(0, -1, 1)
     # convert to torch

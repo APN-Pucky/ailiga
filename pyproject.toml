@@ -7,17 +7,19 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.7,<3.10"
-SuperSuit = "2.6.6"
-#torch = "1.9.0"
-PettingZoo = "1.9.0"
+SuperSuit = "*"
+torch = "*"
+tianshou = {git = "https://github.com/thu-ml/tianshou"}
+PettingZoo = "<1.22.0"
 tqdm = "*"
-#stable-baselines3 = {git ="https://github.com/carlosluis/stable-baselines3.git", branch="fix_tests", extras= ["extra"]}
-stable-baselines3 = "1.6.2"
+#stable-baselines3 = "1.6.2"
+stable-baselines3 = {git ="https://github.com/carlosluis/stable-baselines3.git", branch="fix_tests", extras= ["extra"]}
 pyglet = "1.5.27"
-gym = "<=0.21"
-gymnasium = "<0.0.2"
-#gym = "*"
 cfg_load  = "*"
+
+#gym = "<=0.21"
+#gym = "*"
+#ray = { version = "2" , extras = ["rllib"]}
 #open_spiel = "*"
 
 
