@@ -1,6 +1,6 @@
 class Agent:
-    def __init__(self, env):
-        self.env = env
+    def __init__(self, lambda_env):
+        self.lambda_env = lambda_env
         self.policy = None
 
     def get_policy(self):

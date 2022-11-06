@@ -4,13 +4,13 @@ from tianshou.policy import BasePolicy, DQNPolicy, MultiAgentPolicyManager, Rand
 
 
 class Arena:
-    def __init__(self, env, agents):
-        self.env = env
+    def __init__(self, lambda_env, agents):
+        self.env = lambda_env()
         self.agents = agents
         self.policies = [a.get_policy() for a in self.agents]
         self.env.reset()
 
-    def fight(self, n_episodes=1, n_step=None, render=0.1):
+    def fight(self, n_episodes=1, n_step=None, render=None):
         """Runs a number of episodes between two agents."""
         env = self.env
         policy = MultiAgentPolicyManager(self.policies, self.env)
@@ -21,6 +21,6 @@ class Arena:
         )
         result = collector.collect(n_episode=n_episodes, n_step=n_step, render=render)
         rews, lens = result["rews"], result["lens"]
-        print(result)
+        # print(result)
         print(f"Final reward: {rews[:, 0].mean()}, length: {lens.mean()}")
         print(f"Final reward: {rews[:, 1].mean()}, length: {lens.mean()}")

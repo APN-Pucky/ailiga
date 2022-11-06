@@ -11,10 +11,14 @@ from tianshou.policy import BasePolicy, DQNPolicy, MultiAgentPolicyManager, Rand
 from tianshou.trainer import offpolicy_trainer
 from tianshou.utils.net.common import Net
 
+from ailiga.agent import Agent
 
-class DQNAgent(nn.Module, Agent):
-    def __init__(self, env):
-        super().__init__(env)
+
+class DQNAgent(Agent):
+    def __init__(self, lambda_env, savefile=None):
+        super().__init__(lambda_env)
+        self.env = lambda_env()
+        env = self.env
         observation_space = (
             env.observation_space["observation"]
             if isinstance(env.observation_space, gym.spaces.Dict)
@@ -26,8 +30,7 @@ class DQNAgent(nn.Module, Agent):
             hidden_sizes=[128, 128, 128, 128],
             device="cuda" if torch.cuda.is_available() else "cpu",
         ).to("cuda" if torch.cuda.is_available() else "cpu")
-        if optim is None:
-            optim = torch.optim.Adam(net.parameters(), lr=1e-4)
+        optim = torch.optim.Adam(net.parameters(), lr=1e-4)
         agent_learn = DQNPolicy(
             model=net,
             optim=optim,
@@ -36,10 +39,15 @@ class DQNAgent(nn.Module, Agent):
             target_update_freq=320,
         )
         self.policy = agent_learn
+        if savefile is not None:
+            self.load(savefile)
 
-    def train():
-        train_envs = DummyVectorEnv([_get_env for _ in range(10)])
-        test_envs = DummyVectorEnv([_get_env for _ in range(10)])
+    def load(self, savefile="dqn_agent.pth"):
+        self.policy.load_state_dict(torch.load(savefile))
+
+    def train(self, savefile="dqn_agent.pth"):
+        train_envs = DummyVectorEnv([self.lambda_env for _ in range(10)])
+        test_envs = DummyVectorEnv([self.lambda_env for _ in range(10)])
 
         # seed
         seed = 1
@@ -49,7 +57,10 @@ class DQNAgent(nn.Module, Agent):
         test_envs.seed(seed)
 
         # ======== Step 2: Agent setup =========
-        policy, optim, agents = _get_agents()
+        # policy, optim, agents = _get_agents()
+        agents = [RandomPolicy(), self.policy]
+        policy = MultiAgentPolicyManager(agents, self.env)
+        agents = self.env.agents
 
         # ======== Step 3: Collector setup =========
         train_collector = Collector(
@@ -97,30 +108,7 @@ class DQNAgent(nn.Module, Agent):
             test_in_train=False,
             reward_metric=reward_metric,
         )
-        torch.save(policy.state_dict(), "dqn.pth")
+        torch.save(self.policy.state_dict(), savefile)
 
         # return result, policy.policies[agents[1]]
         print(f"\n==========Result==========\n{result}")
-        print("\n(the trained policy can be accessed via policy.policies[agents[1]])")
-
-    def _get_agents(
-        agent_learn: Optional[BasePolicy] = None,
-        agent_opponent: Optional[BasePolicy] = None,
-        optim: Optional[torch.optim.Optimizer] = None,
-    ) -> Tuple[BasePolicy, torch.optim.Optimizer, list]:
-        env = _get_env()
-        observation_space = (
-            env.observation_space["observation"]
-            if isinstance(env.observation_space, gym.spaces.Dict)
-            else env.observation_space
-        )
-        if agent_learn is None:
-            # model
-            pass
-
-        if agent_opponent is None:
-            agent_opponent = RandomPolicy()
-
-        agents = [agent_opponent, agent_learn]
-        policy = MultiAgentPolicyManager(agents, env)
-        return policy, optim, env.agents
