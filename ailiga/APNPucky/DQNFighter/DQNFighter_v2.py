@@ -14,65 +14,15 @@ from tianshou.utils import TensorboardLogger
 from tianshou.utils.net.common import Net
 from torch.utils.tensorboard import SummaryWriter
 
+from ailiga.APNPucky.DQNFighter.DQNFighter_v0 import DQNFighter_v0
+from ailiga.APNPucky.DQNFighter.DQNFighter_v1 import DQNFighter_v1
 from ailiga.Fighter import Fighter
 from ailiga.TrainedFighter import TrainedFighter
 
 
-class DQNFighter_v0(TrainedFighter):
+class DQNFighter_v2(DQNFighter_v1):
 
-    # https://tianshou.readthedocs.io/en/master/tutorials/dqn.html
-    max_epoch = 50
-    step_per_epoch = 1000
-    step_per_collect = 50
-    episode_per_test = 10
-    batch_size = 64
-    update_per_step = 0.1
-
-    buffer_size = 20_000
-    hidden_sizes = [128, 128, 128, 128]
-
-    reward_threshold = 0.7
-
-    training_num = 10
-    test_num = 10
-
-    lr = 1e-4
-
-    train_eps = 0.1
-    test_eps = 0.05
-    gamma = 0.9
-    n_step = 3
-    target_update_freq = 320
-
-    def compatible_envs(self):
-        return ["tictactoe_v3"]
-
-    def __init__(self, lambda_env, savefile=None):
-        super().__init__(lambda_env)
-        device = "cuda" if torch.cuda.is_available() else "cpu"
-        self.env = lambda_env()
-        env = self.env
-        observation_space = (
-            env.observation_space["observation"]
-            if isinstance(env.observation_space, gym.spaces.Dict)
-            else env.observation_space
-        )
-        net = Net(
-            state_shape=observation_space.shape or observation_space.n,
-            action_shape=env.action_space.shape or env.action_space.n,
-            hidden_sizes=self.hidden_sizes,
-            device=device,
-        ).to(device)
-        optim = torch.optim.Adam(net.parameters(), lr=self.lr)
-        agent_learn = DQNPolicy(
-            model=net,
-            optim=optim,
-            discount_factor=self.gamma,
-            estimation_step=self.n_step,
-            target_update_freq=self.target_update_freq,
-        )
-        self.policy = agent_learn
-        self.load(savefile)
+    reward_threshold = 0.9
 
     def train(self, savefile=None):
         if savefile is None:
@@ -92,7 +42,7 @@ class DQNFighter_v0(TrainedFighter):
 
         # ======== Step 2: Agent setup =========
         # policy, optim, agents = _get_agents()
-        agents = [RandomPolicy(), self.policy]
+        agents = [DQNFighter_v0(self.lambda_env).get_policy(), self.policy]
         policy = MultiAgentPolicyManager(agents, self.env)
         agents = self.env.agents
 

@@ -1,42 +1,67 @@
 from pettingzoo.classic import rps_v2, tictactoe_v3
 from tianshou.env.pettingzoo_env import PettingZooEnv
 
-from ailiga.APNPucky.DQNAgent_v0 import DQNAgent
 from ailiga.APNPucky.DQNFighter.DQNFighter_v0 import DQNFighter_v0
-from ailiga.APNPucky.randomAgent_v0 import RandomAgent
-from ailiga.APNPucky.RandomFighert.RandomFighter_v0 import RandomFighter_v0
-from ailiga.arena import Arena
+from ailiga.APNPucky.DQNFighter.DQNFighter_v1 import DQNFighter_v1
+from ailiga.APNPucky.DQNFighter.DQNFighter_v2 import DQNFighter_v2
+from ailiga.APNPucky.RandomFigher.RandomFighter_v0 import RandomFighter_v0
+from ailiga.Arena import Battle, Tournament
 
 
-def test_random_arena():
+def test_random_random_battle():
     def lenv():
         return PettingZooEnv(rps_v2.env())
 
-    arena = Arena(lenv, [RandomFighter_v0(lenv), RandomFighter_v0(lenv)])
-    arena.fight(1)
+    arena = Battle(lenv, [RandomFighter_v0(lenv), RandomFighter_v0(lenv)])
+    print(arena.fight(1000))
 
 
-def test_dqn_random_arena():
+def test_dqn_random_battle():
     def lenv():
         return PettingZooEnv(tictactoe_v3.env())
 
-    arena = Arena(
+    arena = Battle(
+        lenv,
+        [
+            DQNFighter_v0(lenv),
+            DQNFighter_v0(lenv),
+        ],
+    )
+    print(arena.fight(1000))
+    arena = Battle(
         lenv,
         [
             RandomFighter_v0(lenv),
             DQNFighter_v0(lenv),
         ],
     )
-    arena.fight(10000)
-    arena = Arena(
+    print(arena.fight(1000))
+    arena = Battle(
         lenv,
         [
             RandomFighter_v0(lenv),
             RandomFighter_v0(lenv),
         ],
     )
-    arena.fight(10000)
+    print(arena.fight(1000))
 
 
-test_random_arena()
-test_dqn_random_arena()
+def test_tournament():
+    def lenv():
+        return PettingZooEnv(tictactoe_v3.env())
+
+    tournament = Tournament(
+        lenv,
+        [
+            RandomFighter_v0(lenv),
+            DQNFighter_v0(lenv),
+            DQNFighter_v1(lenv),
+            DQNFighter_v2(lenv),
+        ],
+    )
+    print(tournament.fight(1000)[0])
+
+
+test_random_random_battle()
+test_dqn_random_battle()
+test_tournament()
