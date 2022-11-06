@@ -4,7 +4,6 @@ from typing import Optional, Tuple
 import gym
 import numpy as np
 import torch
-from pettingzoo.classic import rps_v2, tictactoe_v3
 from tianshou.data import Collector, VectorReplayBuffer
 from tianshou.env import DummyVectorEnv, PettingZooEnv
 from tianshou.env.pettingzoo_env import PettingZooEnv
@@ -32,7 +31,7 @@ class DQNFighter_v0(TrainedFighter):
     buffer_size = 20_000
     hidden_sizes = [128, 128, 128, 128]
 
-    reward_threshold = 0.7
+    reward_threshold = 100
 
     training_num = 10
     test_num = 10
@@ -46,7 +45,7 @@ class DQNFighter_v0(TrainedFighter):
     target_update_freq = 320
 
     def compatible_envs(self):
-        return ["tictactoe_v3"]
+        return ["tictactoe_v3", "simple_spread_v2", "knights_archers_zombies_v10"]
 
     def __init__(self, lambda_env, savefile=None):
         super().__init__(lambda_env)

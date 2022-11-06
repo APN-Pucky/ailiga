@@ -13,7 +13,14 @@ class Battle:
         self.env.reset()
 
     def fight(self, n_episodes=1, n_step=None, render=None):
-        """Runs a number of episodes between two agents."""
+        """
+        Runs a number of episodes between two agents.
+
+        :param n_episodes: number of episodes to run
+        :param n_step: number of steps per episode
+        :param render: if True, render the environment
+        :return: list of rewards
+        """
         env = self.env
         policy = MultiAgentPolicyManager(self.policies, self.env)
         policy.eval()
@@ -34,6 +41,13 @@ class Tournament:
         self.agents = agents
 
     def fight(self, n_episodes=1, n_step=None):
+        """
+        Battle between all fighters. Everyone fights everyone.
+
+        :param n_episodes: number of episodes to run
+        :param n_step: number of steps per episode
+        :return: list of rewards
+        """
         attacker = np.zeros((len(self.agents), len(self.agents)))
         defender = np.zeros((len(self.agents), len(self.agents)))
         for i in tqdm.tqdm(range(len(self.agents))):

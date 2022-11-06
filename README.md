@@ -11,7 +11,12 @@ Build of package based on:
 * https://github.com/vwxyzjn/cleanrl
 * https://github.com/Farama-Foundation/Gymnasium
 * https://github.com/deepmind/open_spiel
+* https://github.com/datamllab/rlcard
+* https://tianshou.readthedocs.io/en/master/
 
+## Limitations
+
+Currently, the implementation through `tianshou.BasePolicy` seems to only support DQNPolicy and also not `Discrite()` observation spaces.
 
 ## Tensorboard
 

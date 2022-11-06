@@ -16,6 +16,7 @@ tqdm = "*"
 #stable-baselines3 = {git ="https://github.com/carlosluis/stable-baselines3.git", branch="fix_tests", extras= ["extra"]}
 pyglet = "1.5.27"
 cfg_load  = "*"
+rlcard = "*"
 
 #gym = "<=0.21"
 #gym = "*"
