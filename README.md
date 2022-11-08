@@ -9,15 +9,6 @@
 * https://github.com/datamllab/rlcard
 * https://tianshou.readthedocs.io/en/master/
 
-## Limitations
-
-Currently, the implementation through `tianshou.BasePolicy` seems to only support DQNPolicy and also not `Discrete()` observation spaces.
-
-## Tensorboard
-
-```sh
-tensorboard --logdir log/ --load_fast=false
-```
 
 ## Installation
 
@@ -38,3 +29,14 @@ Currently, training/testing fighters works through the fighter tests.
 ```sh
 python tests/test_dqn_fighter.py
 ```
+
+## Tensorboard
+
+```sh
+tensorboard --logdir log/ --load_fast=false
+```
+
+
+## Limitations
+
+Currently, the implementation through `tianshou.BasePolicy` seems to only support DQNPolicy and also not `Discrete()` observation spaces.
