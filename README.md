@@ -16,7 +16,7 @@ Build of package based on:
 
 ## Limitations
 
-Currently, the implementation through `tianshou.BasePolicy` seems to only support DQNPolicy and also not `Discrite()` observation spaces.
+Currently, the implementation through `tianshou.BasePolicy` seems to only support DQNPolicy and also not `Discrete()` observation spaces.
 
 ## Tensorboard
 
