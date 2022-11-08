@@ -1,10 +1,5 @@
 # AILiga
 
-Build of package based on:
-
-* https://mathspp.com/blog/how-to-create-a-python-package-in-2022
-* https://www.brainsorting.com/posts/publish-a-package-on-pypi-using-poetry/
-
 ## References
 
 * https://github.com/Farama-Foundation/PettingZoo
@@ -30,6 +25,12 @@ tensorboard --logdir log/ --load_fast=false
 poerty install
 poetry shell
 ```
+
+Build of package/python structure based on:
+
+* https://mathspp.com/blog/how-to-create-a-python-package-in-2022
+* https://www.brainsorting.com/posts/publish-a-package-on-pypi-using-poetry/
+
 
 ## Testing and Training
 
