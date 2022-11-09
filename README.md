@@ -8,10 +8,7 @@ poerty install
 poetry shell
 ```
 
-Build of package/python structure based on:
 
-* https://mathspp.com/blog/how-to-create-a-python-package-in-2022
-* https://www.brainsorting.com/posts/publish-a-package-on-pypi-using-poetry/
 
 
 ## Testing and Training
@@ -47,3 +44,7 @@ Currently, the implementation through `tianshou.BasePolicy` seems to only suppor
 
 * http://incompleteideas.net/book/the-book-2nd.html
 
+### package/python structure:
+
+* https://mathspp.com/blog/how-to-create-a-python-package-in-2022
+* https://www.brainsorting.com/posts/publish-a-package-on-pypi-using-poetry/
