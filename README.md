@@ -2,12 +2,18 @@
 
 ## References
 
+### Frameworks
+
 * https://github.com/Farama-Foundation/PettingZoo
 * https://github.com/vwxyzjn/cleanrl
 * https://github.com/Farama-Foundation/Gymnasium
 * https://github.com/deepmind/open_spiel
 * https://github.com/datamllab/rlcard
 * https://tianshou.readthedocs.io/en/master/
+
+### Books
+
+* http://incompleteideas.net/book/the-book-2nd.html
 
 
 ## Installation
