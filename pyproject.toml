@@ -17,6 +17,8 @@ tqdm = "*"
 pyglet = "1.5.27"
 cfg_load  = "*"
 rlcard = "*"
+packaging = "*"
+gymnasium = "*"
 
 #gym = "<=0.21"
 #gym = "*"
