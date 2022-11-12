@@ -31,9 +31,3 @@ class Fighter:
 
     def get_policy(self):
         return self.policy
-
-    def load(self, path):
-        pass
-
-    def train(self):
-        pass

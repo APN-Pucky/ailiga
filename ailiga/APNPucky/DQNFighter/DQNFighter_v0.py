@@ -13,6 +13,7 @@ from tianshou.utils import TensorboardLogger
 from tianshou.utils.net.common import Net
 from torch.utils.tensorboard import SummaryWriter
 
+from ailiga.APNPucky.RandomFigher.RandomFighter_v0 import RandomFighter_v0
 from ailiga.Fighter import Fighter
 from ailiga.TrainedFighter import TrainedFighter
 
@@ -76,11 +77,17 @@ class DQNFighter_v0(TrainedFighter):
         self.policy = agent_learn
         self.load(savefile)
 
-    def train(self, savefile=None):
-        if savefile is None:
-            savefile = self.get_default_savefile()
+    def train(self, savefile=None, seed=None, reset=True):
+        super().train(seed, reset)
+
         train_envs = DummyVectorEnv([self.lambda_env for _ in range(self.training_num)])
         test_envs = DummyVectorEnv([self.lambda_env for _ in range(self.test_num)])
+
+        if seed is not None:
+            np.random.seed(seed)
+            torch.manual_seed(seed)
+            train_envs.seed(seed)
+            test_envs.seed(seed)
 
         # seed
         #        seed = 1
@@ -95,11 +102,15 @@ class DQNFighter_v0(TrainedFighter):
         # ======== Step 2: Agent setup =========
         # policy, optim, agents = _get_agents()
         agents = [
-            *[RandomPolicy() for _ in range(len(self.env.agents) - 1)],
+            *[
+                RandomFighter_v0(self.lambda_env).get_policy()
+                for _ in range(len(self.env.agents) - 1)
+            ],
             self.policy,
         ]
         policy = MultiAgentPolicyManager(agents, self.env)
         agents = self.env.agents
+        self.agent = agents[-1]
 
         # ======== Step 3: Collector setup =========
         train_collector = Collector(
@@ -114,8 +125,6 @@ class DQNFighter_v0(TrainedFighter):
         train_collector.collect(n_step=self.batch_size * self.training_num)
 
         # ======== Step 4: Callback functions setup =========
-        def save_best_fn(policy):
-            torch.save(policy.policies[agents[-1]].state_dict(), savefile)
 
         def stop_fn(mean_rewards):
             return mean_rewards >= self.reward_threshold
@@ -141,7 +150,7 @@ class DQNFighter_v0(TrainedFighter):
             train_fn=train_fn,
             test_fn=test_fn,
             stop_fn=stop_fn,
-            save_best_fn=save_best_fn,
+            save_best_fn=self.save,
             update_per_step=self.update_per_step,
             test_in_train=False,
             reward_metric=reward_metric,
