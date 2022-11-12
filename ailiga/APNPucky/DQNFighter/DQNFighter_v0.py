@@ -80,25 +80,6 @@ class DQNFighter_v0(TrainedFighter):
     def train(self, savefile=None, seed=None, reset=True):
         super().train(seed, reset)
 
-        train_envs = DummyVectorEnv([self.lambda_env for _ in range(self.training_num)])
-        test_envs = DummyVectorEnv([self.lambda_env for _ in range(self.test_num)])
-
-        if seed is not None:
-            np.random.seed(seed)
-            torch.manual_seed(seed)
-            train_envs.seed(seed)
-            test_envs.seed(seed)
-
-        # seed
-        #        seed = 1
-        #        np.random.seed(seed)
-        #        torch.manual_seed(seed)
-        #        train_envs.seed(seed)
-        #        test_envs.seed(seed)
-        for layer in self.policy.children():
-            if hasattr(layer, "reset_parameters"):
-                layer.reset_parameters()
-
         # ======== Step 2: Agent setup =========
         # policy, optim, agents = _get_agents()
         agents = [
@@ -108,18 +89,19 @@ class DQNFighter_v0(TrainedFighter):
             ],
             self.policy,
         ]
+        self.agentindex = -1
         policy = MultiAgentPolicyManager(agents, self.env)
         agents = self.env.agents
-        self.agent = agents[-1]
+        # self.agent = agents[-1]
 
         # ======== Step 3: Collector setup =========
         train_collector = Collector(
             policy,
-            train_envs,
-            VectorReplayBuffer(self.buffer_size, len(train_envs)),
+            self.train_envs,
+            VectorReplayBuffer(self.buffer_size, len(self.train_envs)),
             exploration_noise=True,
         )
-        test_collector = Collector(policy, test_envs, exploration_noise=True)
+        test_collector = Collector(policy, self.test_envs, exploration_noise=True)
         # policy.set_eps(1)
         # batch size * training_num
         train_collector.collect(n_step=self.batch_size * self.training_num)
@@ -130,10 +112,10 @@ class DQNFighter_v0(TrainedFighter):
             return mean_rewards >= self.reward_threshold
 
         def train_fn(epoch, env_step):
-            policy.policies[agents[-1]].set_eps(self.train_eps)
+            policy.policies[self.env.agents[self.agentindex]].set_eps(self.train_eps)
 
         def test_fn(epoch, env_step):
-            policy.policies[agents[-1]].set_eps(self.test_eps)
+            policy.policies[self.env.agents[self.agentindex]].set_eps(self.test_eps)
 
         def reward_metric(rews):
             return rews[:, -1]
@@ -156,7 +138,5 @@ class DQNFighter_v0(TrainedFighter):
             reward_metric=reward_metric,
             logger=self.get_logger(),
         )
-        torch.save(self.policy.state_dict(), savefile)
-
         # return result, policy.policies[agents[1]]
         print(f"\n==========Result==========\n{result}")

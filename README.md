@@ -44,6 +44,11 @@ Currently, the implementation through `tianshou.BasePolicy` seems to only suppor
 
 * http://incompleteideas.net/book/the-book-2nd.html
 
+
+## Development
+
+We use black through
+
 ### package/python structure:
 
 * https://mathspp.com/blog/how-to-create-a-python-package-in-2022
