@@ -119,7 +119,7 @@ testing = ["covdefaults (>=2.2)", "coverage (>=6.4.2)", "pytest (>=7.1.2)", "pyt
 
 [[package]]
 name = "google-auth"
-version = "2.14.0"
+version = "2.14.1"
 description = "Google Authentication Library"
 category = "main"
 optional = false
@@ -134,7 +134,7 @@ six = ">=1.9.0"
 [package.extras]
 aiohttp = ["aiohttp (>=3.6.2,<4.0.0dev)", "requests (>=2.20.0,<3.0.0dev)"]
 enterprise-cert = ["cryptography (==36.0.2)", "pyopenssl (==22.0.0)"]
-pyopenssl = ["pyopenssl (>=20.0.0)"]
+pyopenssl = ["cryptography (>=38.0.3)", "pyopenssl (>=20.0.0)"]
 reauth = ["pyu2f (>=0.1.5)"]
 
 [[package]]
@@ -633,11 +633,11 @@ tinyscaler = ">=1.0.4"
 
 [[package]]
 name = "tensorboard"
-version = "2.10.1"
+version = "2.11.0"
 description = "TensorBoard lets you watch Tensors Flow"
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 
 [package.dependencies]
 absl-py = ">=0.4"
@@ -646,7 +646,7 @@ google-auth-oauthlib = ">=0.4.1,<0.5"
 grpcio = ">=1.24.3"
 markdown = ">=2.6.8"
 numpy = ">=1.12.0"
-protobuf = ">=3.9.2,<3.20"
+protobuf = ">=3.9.2,<4"
 requests = ">=2.21.0,<3"
 setuptools = ">=41.0.0"
 tensorboard-data-server = ">=0.6.0,<0.7.0"
@@ -709,7 +709,7 @@ pybullet = ["pybullet"]
 [package.source]
 type = "git"
 url = "https://github.com/thu-ml/tianshou"
-reference = "HEAD"
+reference = "06aaad460e402bfa4ae3b631a5e7f64d0b1d5405"
 resolved_reference = "06aaad460e402bfa4ae3b631a5e7f64d0b1d5405"
 
 [[package]]
@@ -846,7 +846,7 @@ watchdog = ["watchdog"]
 
 [[package]]
 name = "wheel"
-version = "0.38.2"
+version = "0.38.4"
 description = "A built-package format for Python"
 category = "main"
 optional = false
@@ -869,8 +869,8 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 
 [metadata]
 lock-version = "1.1"
-python-versions = ">=3.7,<3.10"
-content-hash = "a59b13675c807f222329b322bb58b2d2937d3e0b4f837330f81feec9beb01e7c"
+python-versions = ">=3.7,<3.11"
+content-hash = "fbf9e376fbfa36ff7b78f4a4364a263ddc64caf895bd6d0eee89c3726b92ee77"
 
 [metadata.files]
 absl-py = [
@@ -998,8 +998,8 @@ filelock = [
     {file = "filelock-3.8.0.tar.gz", hash = "sha256:55447caa666f2198c5b6b13a26d2084d26fa5b115c00d065664b2124680c4edc"},
 ]
 google-auth = [
-    {file = "google-auth-2.14.0.tar.gz", hash = "sha256:cf24817855d874ede2efd071aa22125445f555de1685b739a9782fcf408c2a3d"},
-    {file = "google_auth-2.14.0-py2.py3-none-any.whl", hash = "sha256:1ad5b0e6eba5f69645971abb3d2c197537d5914070a8c6d30299dfdb07c5c700"},
+    {file = "google-auth-2.14.1.tar.gz", hash = "sha256:ccaa901f31ad5cbb562615eb8b664b3dd0bf5404a67618e642307f00613eda4d"},
+    {file = "google_auth-2.14.1-py2.py3-none-any.whl", hash = "sha256:f5d8701633bebc12e0deea4df8abd8aff31c28b355360597f7f2ee60f2e4d016"},
 ]
 google-auth-oauthlib = [
     {file = "google-auth-oauthlib-0.4.6.tar.gz", hash = "sha256:a90a072f6993f2c327067bf65270046384cda5a8ecb20b94ea9a687f1f233a7a"},
@@ -1499,7 +1499,7 @@ supersuit = [
     {file = "SuperSuit-3.6.0.tar.gz", hash = "sha256:d466303642e2ce8c1af27457fb5700aab06fef2042d76376d6a504f7bdaf991e"},
 ]
 tensorboard = [
-    {file = "tensorboard-2.10.1-py3-none-any.whl", hash = "sha256:fb9222c1750e2fa35ef170d998a1e229f626eeced3004494a8849c88c15d8c1c"},
+    {file = "tensorboard-2.11.0-py3-none-any.whl", hash = "sha256:a0e592ee87962e17af3f0dce7faae3fbbd239030159e9e625cce810b7e35c53d"},
 ]
 tensorboard-data-server = [
     {file = "tensorboard_data_server-0.6.1-py3-none-any.whl", hash = "sha256:809fe9887682d35c1f7d1f54f0f40f98bb1f771b14265b453ca051e2ce58fca7"},
@@ -1576,8 +1576,8 @@ werkzeug = [
     {file = "Werkzeug-2.2.2.tar.gz", hash = "sha256:7ea2d48322cc7c0f8b3a215ed73eabd7b5d75d0b50e31ab006286ccff9e00b8f"},
 ]
 wheel = [
-    {file = "wheel-0.38.2-py3-none-any.whl", hash = "sha256:7a5a3095dceca97a3cac869b8fef4e89b83fafde21b6688f47b6fda7600eb441"},
-    {file = "wheel-0.38.2.tar.gz", hash = "sha256:3d492ef22379a156ec923d2a77051cedfd4df4b667864e9e41ba83f0b70b7149"},
+    {file = "wheel-0.38.4-py3-none-any.whl", hash = "sha256:b60533f3f5d530e971d6737ca6d58681ee434818fab630c83a734bb10c083ce8"},
+    {file = "wheel-0.38.4.tar.gz", hash = "sha256:965f5259b566725405b05e7cf774052044b1ed30119b5d586b2703aafe8719ac"},
 ]
 zipp = [
     {file = "zipp-3.10.0-py3-none-any.whl", hash = "sha256:4fcb6f278987a6605757302a6e40e896257570d11c51628968ccb2a47e80c6c1"},

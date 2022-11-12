@@ -6,10 +6,10 @@ authors = ["Alexander Puck Neuwirth <alexander@neuwirth-informatik.de>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.7,<3.10"
+python = ">=3.7,<3.11"
 SuperSuit = "*"
 torch = "*"
-tianshou = {git = "https://github.com/thu-ml/tianshou"}
+tianshou = {git = "https://github.com/thu-ml/tianshou", rev= "06aaad460e402bfa4ae3b631a5e7f64d0b1d5405"}
 PettingZoo = "<1.22.0"
 tqdm = "*"
 #stable-baselines3 = "1.6.2"
