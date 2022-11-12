@@ -13,8 +13,6 @@ from tianshou.utils import TensorboardLogger
 from tianshou.utils.net.common import Net
 from torch.utils.tensorboard import SummaryWriter
 
-map_location=torch.device('cpu')
-
 from ailiga.Fighter import Fighter
 from ailiga.TrainedFighter import TrainedFighter
 
