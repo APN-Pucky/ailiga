@@ -1,6 +1,12 @@
 # AILiga
 
 
+## Goals
+
+* Monthly releases of session/tournament results
+* User folders
+* Strict versioning for reproducibility
+
 ## Installation
 
 ```sh
