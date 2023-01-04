@@ -10,6 +10,7 @@
 ## Installation
 
 ```sh
+git clone THIS_PROJECT_URL
 poerty install
 poetry shell
 ```
