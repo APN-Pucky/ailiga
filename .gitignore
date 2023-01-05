@@ -132,7 +132,7 @@ dmypy.json
 log/
 docs/source/_autosummary
 
-ailiga/APNPucky/DQNFighter_v0
-ailiga/APNPucky/DQNFighter_v1
-ailiga/APNPucky/DQNFighter_v2
-ailiga/APNPucky/RandomFighter_v0
+ailiga/APNPucky/DQNFighter/v0
+ailiga/APNPucky/DQNFighter/v1
+ailiga/APNPucky/DQNFighter/v2
+ailiga/APNPucky/RandomFighter/v0
