@@ -9,7 +9,7 @@ readme = "README.md"
 python = ">=3.7,<3.11"
 SuperSuit = "*"
 torch = "1.13.0"
-tianshou = "0.4.10"
+tianshou = "0.4.11"
 #tianshou = {git = "https://github.com/thu-ml/tianshou", rev= "06aaad460e402bfa4ae3b631a5e7f64d0b1d5405"}
 #tianshou = {path = "/home/apn/git/tianshou/"}
 PettingZoo = "<1.22.0"
