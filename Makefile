@@ -15,7 +15,7 @@ build:
 
 test:
 	rm -f .coverage coverage.xml
-	poetry run pytest
+	poetry run pytest tests/
 
 commit: 
 	-git add .

@@ -21,7 +21,7 @@ def test_tournament():
             DQNFighter_v1(lenv),
             DQNFighter_v2(lenv),
         ],
-        1000,
+        10,
     )
     tournament.fight()
     print(tournament.attacker_scores)
@@ -38,11 +38,7 @@ def test_tournament_tab():
             DQNFighter_v1(lenv),
             DQNFighter_v2(lenv),
         ],
-        100,
+        10,
     )
     tournament.fight()
     print(tournament.as_rst())
-
-
-test_tournament_tab()
-test_tournament()

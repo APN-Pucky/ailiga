@@ -18,7 +18,7 @@ def _single_fight(t):
 
 
 class Season:
-    def __init__(self, envs, agents, name=None):
+    def __init__(self, envs, agents, name=None, n_episodes=10000):
         self.name = name
         self.envs = envs
         self.agents = agents
@@ -28,7 +28,7 @@ class Season:
                 Tournament(
                     e,
                     [a(e) for a in self.agents if a.valid_env(env.get_env_name(e))],
-                    10000,
+                    n_episodes,
                 )
             )
 
@@ -43,4 +43,5 @@ default_season = Season(
     agents=all_fighters.get_all_fighters(),
     envs=env.get_all_envs(),
     name="default",
+    n_episodes=10000,
 )

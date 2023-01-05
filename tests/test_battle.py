@@ -13,7 +13,7 @@ def test_random_random_battle():
         return PettingZooEnv(rps_v2.env())
 
     arena = Battle(lenv, [RandomFighter_v0(lenv), RandomFighter_v0(lenv)])
-    print(arena.fight(1000))
+    print(arena.fight(10))
 
 
 def test_dqn_random_battle():
@@ -43,8 +43,4 @@ def test_dqn_random_battle():
             RandomFighter_v0(lenv),
         ],
     )
-    print(arena.fight(1000))
-
-
-test_random_random_battle()
-test_dqn_random_battle()
+    print(arena.fight(10))

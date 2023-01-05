@@ -62,7 +62,7 @@ class Tournament:
         :return: list of rewards
         """
         extra_agents = [RandomFighter_v0(self.lambda_env)] * (
-            len(self.lambda_env().agents) - len(self.agents)
+            len(self.lambda_env().agents) - 2
         )
         args = [
             {
