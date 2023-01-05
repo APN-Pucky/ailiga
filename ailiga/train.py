@@ -1,7 +1,11 @@
 import argparse
 
 from ailiga import env
-from ailiga.all_fighters import get_all_fighters, get_fighter_by_name
+from ailiga.all_fighters import (
+    get_all_fighters,
+    get_fighter_by_name,
+    get_fighters_from_list,
+)
 from ailiga.trained_fighter import TrainedFighter
 
 
@@ -12,11 +16,7 @@ def train(a_fighter=None, a_env=None, a_force=False):
     else:
         envs = a_env
     for e in envs:
-        fghts = []
-        if not a_fighter:
-            fghts = get_all_fighters()
-        else:
-            fghts = [get_fighter_by_name(agent) for agent in a_fighter]
+        fghts = get_fighters_from_list(a_fighter)
         if not a_force:
             # get all fighters that are valid for the given env
             fghts = [

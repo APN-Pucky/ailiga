@@ -32,6 +32,7 @@ pygame ="*"
 #open_spiel = "*"
 
 [tool.poetry.scripts]
+ailiga-battle= "ailiga.battle:main"
 ailiga-train = "ailiga.train:main"
 ailiga-tournament = "ailiga.tournament:main"
 

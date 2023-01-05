@@ -55,6 +55,7 @@ class IndexPolicy(BasePolicy):
             Please refer to :meth:`~tianshou.policy.BasePolicy.forward` for
             more detailed explanation.
         """
+        # print(batch.terminated.__dict__,batch.done.__dict__)
         mask = batch.obs.mask
         # mask is a boolean array with shape (batch_size, action_dim)
         # mask[i,j] is True if action j is available for agent i
