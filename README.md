@@ -3,7 +3,7 @@
 
 ## Goals
 
-* Monthly releases of session/tournament results
+* Monthly releases of seasons/tournament results
 * User folders
 * Strict versioning for reproducibility (ocne a version is pushed, gitignore it)
 
