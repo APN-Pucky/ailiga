@@ -1814,7 +1814,7 @@ tests = ["pytest", "pytest-cov"]
 
 [[package]]
 name = "tianshou"
-version = "0.4.10"
+version = "0.4.11"
 description = "A Library for Deep Reinforcement Learning"
 category = "main"
 optional = false
@@ -1825,6 +1825,7 @@ gym = ">=0.23.1"
 h5py = ">=2.10.0"
 numba = ">=0.51.0"
 numpy = ">1.16.0"
+packaging = "*"
 protobuf = ">=3.19.0,<3.20.0"
 tensorboard = ">=2.5.0"
 torch = ">=1.4.0"
@@ -2069,7 +2070,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<3.11"
-content-hash = "00dfa508e7c854891870e527f5222e425fed30ea2dbf03110aa8d0810d29ea06"
+content-hash = "01399226665f963e8e8914ab5e486b7dbab80141d9ad527b0469b10f6792328e"
 
 [metadata.files]
 absl-py = [
@@ -2586,6 +2587,7 @@ lazy-object-proxy = [
     {file = "lazy_object_proxy-1.9.0-cp39-cp39-win_amd64.whl", hash = "sha256:db1c1722726f47e10e0b5fdbf15ac3b8adb58c091d12b3ab713965795036985f"},
 ]
 livereload = [
+    {file = "livereload-2.6.3-py2.py3-none-any.whl", hash = "sha256:ad4ac6f53b2d62bb6ce1a5e6e96f1f00976a32348afedcb4b6d68df2a1d346e4"},
     {file = "livereload-2.6.3.tar.gz", hash = "sha256:776f2f865e59fde56490a56bcc6773b6917366bce0c267c60ee8aaf1a0959869"},
 ]
 llvmlite = [
@@ -3343,8 +3345,8 @@ termcolor = [
     {file = "termcolor-2.2.0.tar.gz", hash = "sha256:dfc8ac3f350788f23b2947b3e6cfa5a53b630b612e6cd8965a015a776020b99a"},
 ]
 tianshou = [
-    {file = "tianshou-0.4.10-py3-none-any.whl", hash = "sha256:4c52df8552a3c32e6d17996c5d89de3383a00d43648b6d0ffcbe52181a001b74"},
-    {file = "tianshou-0.4.10.tar.gz", hash = "sha256:c97ae1c689a9e63df527301b1c6c8ce8661819909efb7d8b632ec9eb4ab62fda"},
+    {file = "tianshou-0.4.11-py3-none-any.whl", hash = "sha256:fb8cc71753581c86d2cf0ae4a720df81a028a57d9716a73450ade00247e2599d"},
+    {file = "tianshou-0.4.11.tar.gz", hash = "sha256:443ec4030bd4c0730631632653dc16a92f7e95257112a4a71cbe2e755bc59db0"},
 ]
 toml = [
     {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
