@@ -1,6 +1,0 @@
-ailiga.env.tictactoe\_v3
-========================
-
-.. currentmodule:: ailiga.env
-
-.. autofunction:: tictactoe_v3

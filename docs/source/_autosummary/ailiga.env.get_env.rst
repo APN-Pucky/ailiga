@@ -1,6 +1,0 @@
-ailiga.env.get\_env
-===================
-
-.. currentmodule:: ailiga.env
-
-.. autofunction:: get_env
