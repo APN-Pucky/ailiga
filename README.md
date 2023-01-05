@@ -1,5 +1,6 @@
 # AILiga
 
+[![Documentation Status](https://readthedocs.org/projects/ailiga/badge/?version=latest)](https://ailiga.readthedocs.io/en/latest/?badge=latest)
 
 ## Goals
 
