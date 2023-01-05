@@ -1,5 +1,5 @@
 # AILiga
-[![PyPI version][pypi image]][pypi link] [![PyPI version][pypi versions]][pypi link]  ![downloads](https://img.shields.io/pypi/dm/smpl_io.svg) [![Documentation Status](https://readthedocs.org/projects/ailiga/badge/?version=latest)](https://ailiga.readthedocs.io/en/latest/?badge=latest)
+[![PyPI version][pypi image]][pypi link] [![PyPI version][pypi versions]][pypi link]  ![downloads](https://img.shields.io/pypi/dm/ailiga.svg) [![Documentation Status](https://readthedocs.org/projects/ailiga/badge/?version=latest)](https://ailiga.readthedocs.io/en/latest/?badge=latest)
 
 ## Goals
 
