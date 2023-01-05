@@ -59,12 +59,8 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.todo",
     "sphinx.ext.doctest",
-    "matplotlib.sphinxext.plot_directive",
-    #'numpydoc',
     "sphinx.ext.autosummary",
     "sphinx.ext.coverage",
-    #'jupyter_sphinx.execute'
-    # "autoapi.extension",
 ]
 nbsphinx_execute = "always"
 # nbsphinx_widgets_path=""
