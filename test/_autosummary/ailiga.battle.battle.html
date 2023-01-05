@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>ailiga.all_fighters.get_all_fighters &mdash; ailiga  documentation</title>
+  <title>ailiga.battle.battle &mdash; ailiga  documentation</title>
   
 
   
@@ -45,8 +45,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ailiga.all_fighters.get_fighter_by_name" href="ailiga.all_fighters.get_fighter_by_name.html" />
-    <link rel="prev" title="ailiga.all_fighters" href="ailiga.all_fighters.html" /> 
+    <link rel="next" title="ailiga.battle.main" href="ailiga.battle.main.html" />
+    <link rel="prev" title="ailiga.battle" href="ailiga.battle.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,17 +98,16 @@
               <p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="ailiga.html">ailiga</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="ailiga.all_fighters.html">ailiga.all_fighters</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">ailiga.all_fighters.get_all_fighters</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ailiga.all_fighters.get_all_fighters"><code class="docutils literal notranslate"><span class="pre">get_all_fighters()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ailiga.all_fighters.html">ailiga.all_fighters</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="ailiga.battle.html">ailiga.battle</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ailiga.battle.battle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ailiga.battle.battle"><code class="docutils literal notranslate"><span class="pre">battle()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="ailiga.all_fighters.get_fighter_by_name.html">ailiga.all_fighters.get_fighter_by_name</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ailiga.all_fighters.get_fighters_from_list.html">ailiga.all_fighters.get_fighters_from_list</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ailiga.all_fighters.search_unique_list.html">ailiga.all_fighters.search_unique_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ailiga.battle.main.html">ailiga.battle.main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ailiga.battle.Battle.html">ailiga.battle.Battle</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ailiga.battle.html">ailiga.battle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ailiga.env.html">ailiga.env</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ailiga.fighter.html">ailiga.fighter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ailiga.season.html">ailiga.season</a></li>
@@ -186,15 +185,15 @@
         
           <li><a href="ailiga.html">ailiga</a> &raquo;</li>
         
-          <li><a href="ailiga.all_fighters.html">ailiga.all_fighters</a> &raquo;</li>
+          <li><a href="ailiga.battle.html">ailiga.battle</a> &raquo;</li>
         
-      <li>ailiga.all_fighters.get_all_fighters</li>
+      <li>ailiga.battle.battle</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/_autosummary/ailiga.all_fighters.get_all_fighters.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/_autosummary/ailiga.battle.battle.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -207,12 +206,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="ailiga-all-fighters-get-all-fighters">
-<h1>ailiga.all_fighters.get_all_fighters<a class="headerlink" href="#ailiga-all-fighters-get-all-fighters" title="Permalink to this heading">¶</a></h1>
+  <section id="ailiga-battle-battle">
+<h1>ailiga.battle.battle<a class="headerlink" href="#ailiga-battle-battle" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ailiga.all_fighters.get_all_fighters">
-<span class="sig-prename descclassname"><span class="pre">ailiga.all_fighters.</span></span><span class="sig-name descname"><span class="pre">get_all_fighters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ailiga/all_fighters.html#get_all_fighters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ailiga.all_fighters.get_all_fighters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get all fighters.</p>
+<dt class="sig sig-object py" id="ailiga.battle.battle">
+<span class="sig-prename descclassname"><span class="pre">ailiga.battle.</span></span><span class="sig-name descname"><span class="pre">battle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a_fighter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a_env</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tictactoe_v3'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a_n_episodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a_n_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">render</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a_force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ailiga/battle.html#battle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ailiga.battle.battle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run a battle between agents.</p>
 </dd></dl>
 
 </section>
@@ -223,8 +222,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="ailiga.all_fighters.get_fighter_by_name.html" class="btn btn-neutral float-right" title="ailiga.all_fighters.get_fighter_by_name" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="ailiga.all_fighters.html" class="btn btn-neutral float-left" title="ailiga.all_fighters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ailiga.battle.main.html" class="btn btn-neutral float-right" title="ailiga.battle.main" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ailiga.battle.html" class="btn btn-neutral float-left" title="ailiga.battle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

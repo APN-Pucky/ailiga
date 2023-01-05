@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                2023.01-6-g1967bd3
+                2023.01-7-g1e11380
               </div>
             
           
@@ -180,15 +180,23 @@
            <div itemprop="articleBody">
             
   <h1>Source code for ailiga.all_fighters</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">ailiga.APNPucky.DQNFighter.v0.DQNFighter_v0</span> <span class="kn">import</span> <span class="n">DQNFighter_v0</span>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">from</span> <span class="nn">ailiga.APNPucky.DQNFighter.v0.DQNFighter_v0</span> <span class="kn">import</span> <span class="n">DQNFighter_v0</span>
 <span class="kn">from</span> <span class="nn">ailiga.APNPucky.DQNFighter.v1.DQNFighter_v1</span> <span class="kn">import</span> <span class="n">DQNFighter_v1</span>
 <span class="kn">from</span> <span class="nn">ailiga.APNPucky.DQNFighter.v2.DQNFighter_v2</span> <span class="kn">import</span> <span class="n">DQNFighter_v2</span>
+<span class="kn">from</span> <span class="nn">ailiga.APNPucky.IndexFighter.v0.IndexFighter_v0</span> <span class="kn">import</span> <span class="n">IndexFighter_v0</span>
 <span class="kn">from</span> <span class="nn">ailiga.APNPucky.RandomFigher.v0.RandomFighter_v0</span> <span class="kn">import</span> <span class="n">RandomFighter_v0</span>
+<span class="kn">from</span> <span class="nn">ailiga.APNPucky.RandomIndexFighter.v0.RandomIndexFighter_v0</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">RandomIndexFighter_v0</span><span class="p">,</span>
+<span class="p">)</span>
 
 
 <div class="viewcode-block" id="get_all_fighters"><a class="viewcode-back" href="../../_autosummary/ailiga.all_fighters.get_all_fighters.html#ailiga.all_fighters.get_all_fighters">[docs]</a><span class="k">def</span> <span class="nf">get_all_fighters</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get all fighters.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">[</span>
+        <span class="n">RandomIndexFighter_v0</span><span class="p">,</span>
+        <span class="n">IndexFighter_v0</span><span class="p">,</span>
         <span class="n">RandomFighter_v0</span><span class="p">,</span>
         <span class="n">DQNFighter_v0</span><span class="p">,</span>
         <span class="n">DQNFighter_v1</span><span class="p">,</span>
@@ -196,11 +204,37 @@
     <span class="p">]</span></div>
 
 
+<div class="viewcode-block" id="search_unique_list"><a class="viewcode-back" href="../../_autosummary/ailiga.all_fighters.search_unique_list.html#ailiga.all_fighters.search_unique_list">[docs]</a><span class="k">def</span> <span class="nf">search_unique_list</span><span class="p">(</span><span class="n">crit</span><span class="p">,</span> <span class="n">a_fighter</span><span class="p">):</span>
+    <span class="n">cur</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">fighter</span> <span class="ow">in</span> <span class="n">a_fighter</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">crit</span><span class="p">(</span><span class="n">fighter</span><span class="o">.</span><span class="n">get_name</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">cur</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="n">fighter</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">break</span>
+    <span class="k">return</span> <span class="n">cur</span></div>
+
+
 <div class="viewcode-block" id="get_fighter_by_name"><a class="viewcode-back" href="../../_autosummary/ailiga.all_fighters.get_fighter_by_name.html#ailiga.all_fighters.get_fighter_by_name">[docs]</a><span class="k">def</span> <span class="nf">get_fighter_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get a fighter by name.&quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">fighter</span> <span class="ow">in</span> <span class="n">get_all_fighters</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">fighter</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">fighter</span></div>
+    <span class="c1"># check if fighter is unique in the end of the fighter list of strings</span>
+    <span class="n">fighters</span> <span class="o">=</span> <span class="n">get_all_fighters</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">search_unique_list</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">fighters</span><span class="p">)</span>
+        <span class="ow">or</span> <span class="n">search_unique_list</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">x</span><span class="p">,</span> <span class="n">fighters</span><span class="p">)</span>
+        <span class="ow">or</span> <span class="n">search_unique_list</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">fighters</span><span class="p">)</span>
+        <span class="ow">or</span> <span class="n">search_unique_list</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="n">name</span><span class="p">,</span> <span class="n">fighters</span><span class="p">)</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_fighters_from_list"><a class="viewcode-back" href="../../_autosummary/ailiga.all_fighters.get_fighters_from_list.html#ailiga.all_fighters.get_fighters_from_list">[docs]</a><span class="k">def</span> <span class="nf">get_fighters_from_list</span><span class="p">(</span><span class="n">a_fighter</span><span class="p">):</span>
+    <span class="n">fghts</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">a_fighter</span><span class="p">:</span>
+        <span class="n">fghts</span> <span class="o">=</span> <span class="n">get_all_fighters</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fghts</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_fighter_by_name</span><span class="p">(</span><span class="n">agent</span><span class="p">)</span> <span class="k">for</span> <span class="n">agent</span> <span class="ow">in</span> <span class="n">a_fighter</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">fghts</span></div>
 </pre></div>
 
            </div>

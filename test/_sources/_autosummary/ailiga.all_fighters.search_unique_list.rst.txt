@@ -1,0 +1,6 @@
+ailiga.all\_fighters.search\_unique\_list
+=========================================
+
+.. currentmodule:: ailiga.all_fighters
+
+.. autofunction:: search_unique_list

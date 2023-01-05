@@ -16,6 +16,8 @@ ailiga.all\_fighters
    
       get_all_fighters
       get_fighter_by_name
+      get_fighters_from_list
+      search_unique_list
    
    
 

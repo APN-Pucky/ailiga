@@ -1,0 +1,6 @@
+ailiga.all\_fighters.get\_fighters\_from\_list
+==============================================
+
+.. currentmodule:: ailiga.all_fighters
+
+.. autofunction:: get_fighters_from_list

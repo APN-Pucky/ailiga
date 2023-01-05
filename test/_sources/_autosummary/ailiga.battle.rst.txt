@@ -9,6 +9,14 @@ ailiga.battle
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:                                         
+   
+      battle
+      main
+   
    
 
    

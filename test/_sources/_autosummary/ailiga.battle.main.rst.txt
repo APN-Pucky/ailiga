@@ -1,0 +1,6 @@
+ailiga.battle.main
+==================
+
+.. currentmodule:: ailiga.battle
+
+.. autofunction:: main
