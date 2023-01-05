@@ -2,7 +2,7 @@
 # Season Script
 
 tm=$(date +%Y_%m)
-for envi in tictactoe_v3 simple_spread_v2 knights_archers_zombies_v10
+for envi in tictactoe_v3 simple_spread_v2 knights_archers_zombies_v10 leduc_holdem_v4 #rps_v2 
 do
 	mkdir -p docs/source/tournaments/tabs/$envi
 	poetry run python ailiga/tournament.py --env $envi --to_file docs/source/tournaments/tabs/$envi/$tm.rst &
