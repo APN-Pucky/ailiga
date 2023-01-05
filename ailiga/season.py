@@ -5,7 +5,7 @@ from pqdm.processes import pqdm as ppqdm
 from pqdm.threads import pqdm as tpqdm
 from tianshou.env.pettingzoo_env import PettingZooEnv
 
-from ailiga import env
+from ailiga import all_fighters, env
 from ailiga.APNPucky.DQNFighter.DQNFighter_v0 import DQNFighter_v0
 from ailiga.APNPucky.DQNFighter.DQNFighter_v1 import DQNFighter_v1
 from ailiga.APNPucky.DQNFighter.DQNFighter_v2 import DQNFighter_v2
@@ -40,16 +40,7 @@ class Season:
 
 
 default_season = Season(
-    agents=[
-        RandomFighter_v0,
-        DQNFighter_v0,
-        DQNFighter_v1,
-        DQNFighter_v2,
-    ],
-    envs=[
-        lambda: PettingZooEnv(tictactoe_v3.env()),
-        # lambda: PettingZooEnv(simple_spread_v2.env()),
-        # lambda: PettingZooEnv(knights_archers_zombies_v10.env()),
-    ],
+    agents=all_fighters.get_all_fighters(),
+    envs=env.get_all_envs(),
     name="default",
 )

@@ -15,7 +15,6 @@ build:
 
 test:
 	rm -f .coverage coverage.xml
-	find docs/source/example/ -type f -name '*.ipynb' | xargs poetry run jupyter nbconvert --to script
 	poetry run pytest
 
 commit: 
@@ -31,7 +30,6 @@ pull: commit
 clean: 
 	rm -r docs/build docs/source/_autosummary
 	rm -r .eggs .pytest_cache *.egg-info
-	find docs/source/example/ -type f -name '*.ipynb' | xargs jupyter nbconvert --clear-output --inplace
 
 
 release: push html

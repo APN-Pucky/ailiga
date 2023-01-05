@@ -1,4 +1,4 @@
-﻿ailiga.tournament.Tournament
+ailiga.tournament.Tournament
 ============================
 
 .. currentmodule:: ailiga.tournament

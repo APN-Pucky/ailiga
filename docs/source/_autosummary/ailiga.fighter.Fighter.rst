@@ -1,4 +1,4 @@
-﻿ailiga.fighter.Fighter
+ailiga.fighter.Fighter
 ======================
 
 .. currentmodule:: ailiga.fighter

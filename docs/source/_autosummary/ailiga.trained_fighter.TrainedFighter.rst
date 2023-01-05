@@ -1,4 +1,4 @@
-﻿ailiga.trained\_fighter.TrainedFighter
+ailiga.trained\_fighter.TrainedFighter
 ======================================
 
 .. currentmodule:: ailiga.trained_fighter
