@@ -1,9 +1,16 @@
 # AILiga
 
 
+## Goals
+
+* Monthly releases of session/tournament results
+* User folders
+* Strict versioning for reproducibility
+
 ## Installation
 
 ```sh
+git clone THIS_PROJECT_URL
 poerty install
 poetry shell
 ```
