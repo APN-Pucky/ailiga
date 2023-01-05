@@ -5,7 +5,7 @@ from ailiga.APNPucky.DQNFighter.v1.DQNFighter_v1 import DQNFighter_v1
 from ailiga.APNPucky.DQNFighter.v2.DQNFighter_v2 import DQNFighter_v2
 from ailiga.env import (
     knights_archers_zombies_v10,
-    ledud_holdem_v4,
+    leduc_holdem_v4,
     rps_v2,
     simple_spread_v2,
     tictactoe_v3,
@@ -34,7 +34,7 @@ def test_train_knights_archers_zombies_v10():
 
 def test_train_leduc_holdem_v4():
     for v in versions:
-        f = v(ledud_holdem_v4)
+        f = v(leduc_holdem_v4)
         f.train()
 
 

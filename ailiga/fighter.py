@@ -33,7 +33,7 @@ class Fighter:
 
     @classmethod
     def valid_env(cls, name):
-        if cls.compatible_envs() is not True and name not in cls.compatible_envs():
+        if name not in cls.compatible_envs():
             fighter_name = cls.get_name()
             return False
         return True

@@ -115,18 +115,12 @@ class Tournament:
         for i in sorted(
             range(len(self.agents)), key=lambda k: self.agents[ind_perm[k]].get_name()
         ):
-            dic[self.agents[ind_perm[i]].get_name()] = scores[i]
+            dic[self.agents[ind_perm[i]].get_name()] = [
+                "{0:.3g}".format(s) for s in scores[i]
+            ]
         ret = doc.array_table(dic, tabs=0, init=True)
         if to_file is not None:
-            io.write(
-                to_file,
-                ""
-                # self.get_name()
-                # + ", "
-                + os.path.basename(to_file).split(".")[0]
-                + "\n------------------------------\n\n"
-                + ret,
-            )
+            io.write(to_file, ret)
         return ret
 
 

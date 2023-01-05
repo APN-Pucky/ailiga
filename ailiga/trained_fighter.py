@@ -31,7 +31,12 @@ class TrainedFighter(Fighter):
         if savefile is None:
             savefile = self.get_default_savefile()
         if os.path.isfile(savefile):
-            self.policy.load_state_dict(torch.load(savefile))
+            self.policy.load_state_dict(
+                torch.load(
+                    savefile,
+                    map_location="cuda" if torch.cuda.is_available() else "cpu",
+                )
+            )
             return True
         else:
             return False

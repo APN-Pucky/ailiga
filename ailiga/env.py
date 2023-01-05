@@ -34,7 +34,7 @@ def knights_archers_zombies_v10():
     return PettingZooEnv(_knights_archers_zombies_v10.env())
 
 
-def ledud_holdem_v4():
+def leduc_holdem_v4():
     return PettingZooEnv(_leduc_holdem_v4.env())
 
 
@@ -47,9 +47,13 @@ def get_all_envs():
         knights_archers_zombies_v10,
         tictactoe_v3,
         simple_spread_v2,
-        ledud_holdem_v4,
+        leduc_holdem_v4,
         rps_v2,
     ]
+
+
+def get_all_env_names():
+    return get_envs().keys()
 
 
 def get_envs():
