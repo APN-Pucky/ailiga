@@ -2,9 +2,9 @@ import gym
 from pettingzoo.classic import rps_v2, tictactoe_v3
 from tianshou.env.pettingzoo_env import PettingZooEnv
 
-from ailiga.APNPucky.DQNFighter.DQNFighter_v0 import DQNFighter_v0
+from ailiga.APNPucky.DQNFighter.v0.DQNFighter_v0 import DQNFighter_v0
 from ailiga.APNPucky.PPOFighter.PPOFighter_v0 import PPOFighter_v0
-from ailiga.APNPucky.RandomFigher.RandomFighter_v0 import RandomFighter_v0
+from ailiga.APNPucky.RandomFigher.v0.RandomFighter_v0 import RandomFighter_v0
 
 
 def test_train_cartpole():

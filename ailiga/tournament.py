@@ -13,7 +13,7 @@ from tianshou.policy import BasePolicy, DQNPolicy, MultiAgentPolicyManager, Rand
 
 from ailiga import env
 from ailiga.all_fighters import get_all_fighters, get_fighter_by_name
-from ailiga.APNPucky.RandomFigher.RandomFighter_v0 import RandomFighter_v0
+from ailiga.APNPucky.RandomFigher.v0.RandomFighter_v0 import RandomFighter_v0
 from ailiga.battle import Battle
 from ailiga.fighter import Fighter
 

@@ -3,7 +3,7 @@ from pettingzoo.classic import rps_v2, tictactoe_v3
 from pettingzoo.mpe import simple_spread_v2
 from tianshou.env.pettingzoo_env import PettingZooEnv
 
-from ailiga.APNPucky.DQNFighter.DQNFighter_v0 import DQNFighter_v0
+from ailiga.APNPucky.DQNFighter.v0.DQNFighter_v0 import DQNFighter_v0
 from ailiga.APNPucky.PPOFighter.PPOFighter_v0 import PPOFighter_v0
 
 

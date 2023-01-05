@@ -6,10 +6,10 @@ from pqdm.threads import pqdm as tpqdm
 from tianshou.env.pettingzoo_env import PettingZooEnv
 
 from ailiga import all_fighters, env
-from ailiga.APNPucky.DQNFighter.DQNFighter_v0 import DQNFighter_v0
-from ailiga.APNPucky.DQNFighter.DQNFighter_v1 import DQNFighter_v1
-from ailiga.APNPucky.DQNFighter.DQNFighter_v2 import DQNFighter_v2
-from ailiga.APNPucky.RandomFigher.RandomFighter_v0 import RandomFighter_v0
+from ailiga.APNPucky.DQNFighter.v0.DQNFighter_v0 import DQNFighter_v0
+from ailiga.APNPucky.DQNFighter.v1.DQNFighter_v1 import DQNFighter_v1
+from ailiga.APNPucky.DQNFighter.v2.DQNFighter_v2 import DQNFighter_v2
+from ailiga.APNPucky.RandomFigher.v0.RandomFighter_v0 import RandomFighter_v0
 from ailiga.tournament import Tournament
 
 

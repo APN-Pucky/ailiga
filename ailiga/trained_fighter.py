@@ -41,11 +41,13 @@ class TrainedFighter(Fighter):
         if self.user is None:
             raise ValueError("user must be set")
         name = (
-            self.traindir
-            + "/"
-            + self.get_env_name()
+            "ailiga/"
             + "/"
             + self.get_user()
+            + "/"
+            + self.__class__.__name__.replace("_v", "/v")
+            + "/"
+            + self.get_env_name()
             + "/"
             + self.__class__.__name__
             + ".pth"

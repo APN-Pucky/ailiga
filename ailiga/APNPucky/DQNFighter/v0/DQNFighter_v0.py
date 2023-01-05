@@ -13,7 +13,7 @@ from tianshou.utils import TensorboardLogger
 from tianshou.utils.net.common import Net
 from torch.utils.tensorboard import SummaryWriter
 
-from ailiga.APNPucky.RandomFigher.RandomFighter_v0 import RandomFighter_v0
+from ailiga.APNPucky.RandomFigher.v0.RandomFighter_v0 import RandomFighter_v0
 from ailiga.fighter import Fighter
 from ailiga.trained_fighter import TrainedFighter
 

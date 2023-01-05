@@ -14,9 +14,9 @@ from tianshou.utils import TensorboardLogger
 from tianshou.utils.net.common import Net
 from torch.utils.tensorboard import SummaryWriter
 
-from ailiga.APNPucky.DQNFighter.DQNFighter_v0 import DQNFighter_v0
-from ailiga.APNPucky.DQNFighter.DQNFighter_v1 import DQNFighter_v1
-from ailiga.APNPucky.RandomFigher.RandomFighter_v0 import RandomFighter_v0
+from ailiga.APNPucky.DQNFighter.v0.DQNFighter_v0 import DQNFighter_v0
+from ailiga.APNPucky.DQNFighter.v1.DQNFighter_v1 import DQNFighter_v1
+from ailiga.APNPucky.RandomFigher.v0.RandomFighter_v0 import RandomFighter_v0
 from ailiga.fighter import Fighter
 from ailiga.trained_fighter import TrainedFighter
 
