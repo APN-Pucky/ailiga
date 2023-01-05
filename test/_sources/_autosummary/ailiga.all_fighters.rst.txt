@@ -1,0 +1,31 @@
+ailiga.all\_fighters
+====================
+
+.. automodule:: ailiga.all_fighters
+  
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:                                         
+   
+      get_all_fighters
+      get_fighter_by_name
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

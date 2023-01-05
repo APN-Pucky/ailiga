@@ -1,0 +1,27 @@
+ailiga.season.Season
+====================
+
+.. currentmodule:: ailiga.season
+
+.. autoclass:: Season
+   :members:                                   
+   :show-inheritance:                           
+   :inherited-members:                         
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Season.__init__
+      ~Season.as_rst
+      ~Season.fight
+   
+   
+
+   
+   
+   

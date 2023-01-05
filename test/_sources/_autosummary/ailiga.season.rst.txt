@@ -1,0 +1,31 @@
+ailiga.season
+=============
+
+.. automodule:: ailiga.season
+  
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:                                         
+      :template: custom-class-template.rst               
+   
+      Season
+   
+   
+
+   
+   
+   
+
+
+

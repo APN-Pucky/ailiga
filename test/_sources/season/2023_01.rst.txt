@@ -1,0 +1,24 @@
+
+2023_01
+========
+
+knights_archers_zombies_v10
+---------------------------
+
+.. include:: ../tabs/knights_archers_zombies_v10/2023_01.rst
+
+leduc_holdem_v4
+---------------
+
+.. include:: ../tabs/leduc_holdem_v4/2023_01.rst
+
+simple_spread_v2
+----------------
+
+
+.. include:: ../tabs/simple_spread_v2/2023_01.rst
+
+tictactoe_v3
+------------
+
+.. include:: ../tabs/tictactoe_v3/2023_01.rst

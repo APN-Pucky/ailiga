@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ailiga.battle &mdash; ailiga  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ailiga
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_autosummary/ailiga.html">ailiga</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Season:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../season/2023_01.html">2023_01</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tournaments:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tournaments/knights_archers_zombies_v10.html">knights_archers_zombies_v10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tournaments/leduc_holdem_v4.html">leduc_holdem_v4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tournaments/simple_spread_v2.html">simple_spread_v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tournaments/tictactoe_v3.html">tictactoe_v3</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/APN-Pucky/ailiga">GitHub</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Versions:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://ailiga.readthedocs.io/en/">RTD</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ailiga</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>ailiga.battle</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for ailiga.battle</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tqdm</span>
+<span class="kn">from</span> <span class="nn">tianshou.data</span> <span class="kn">import</span> <span class="n">Collector</span>
+<span class="kn">from</span> <span class="nn">tianshou.env</span> <span class="kn">import</span> <span class="n">DummyVectorEnv</span><span class="p">,</span> <span class="n">RayVectorEnv</span><span class="p">,</span> <span class="n">SubprocVectorEnv</span>
+<span class="kn">from</span> <span class="nn">tianshou.policy</span> <span class="kn">import</span> <span class="n">BasePolicy</span><span class="p">,</span> <span class="n">DQNPolicy</span><span class="p">,</span> <span class="n">MultiAgentPolicyManager</span><span class="p">,</span> <span class="n">RandomPolicy</span>
+
+<span class="kn">from</span> <span class="nn">ailiga</span> <span class="kn">import</span> <span class="n">env</span> <span class="k">as</span> <span class="n">menv</span>
+
+
+<div class="viewcode-block" id="Battle"><a class="viewcode-back" href="../../_autosummary/ailiga.battle.Battle.html#ailiga.battle.Battle">[docs]</a><span class="k">class</span> <span class="nc">Battle</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Runs a battle between two or more agents.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Battle.__init__"><a class="viewcode-back" href="../../_autosummary/ailiga.battle.Battle.html#ailiga.battle.Battle.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lambda_env</span><span class="p">,</span> <span class="n">agents</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="o">=</span> <span class="n">lambda_env</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lambda_env</span> <span class="o">=</span> <span class="n">lambda_env</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">agents</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">type</span><span class="p">):</span>
+            <span class="c1"># agents are classes, not instances</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">agents</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lambda_env</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">agents</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">agents</span> <span class="o">=</span> <span class="n">agents</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">policies</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">get_policy</span><span class="p">()</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rews</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lens</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">agents</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Agents do not match environment: &quot;</span>
+                <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">agents</span><span class="p">)</span>
+                <span class="o">+</span> <span class="s2">&quot; vs &quot;</span>
+                <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="p">)</span>
+            <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Battle.fight"><a class="viewcode-back" href="../../_autosummary/ailiga.battle.Battle.html#ailiga.battle.Battle.fight">[docs]</a>    <span class="k">def</span> <span class="nf">fight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_episodes</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_step</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">render</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Runs a number of episodes between two agents.</span>
+
+<span class="sd">        :param n_episodes: number of episodes to run</span>
+<span class="sd">        :param n_step: number of steps per episode</span>
+<span class="sd">        :param render: if True, render the environment</span>
+<span class="sd">        :return: list of rewards</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">env</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span>
+        <span class="n">policy</span> <span class="o">=</span> <span class="n">MultiAgentPolicyManager</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">policies</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">)</span>
+        <span class="n">policy</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="c1"># policy.policies[agents[args.agent_id - 1]].set_eps(0.05)</span>
+        <span class="n">collector</span> <span class="o">=</span> <span class="n">Collector</span><span class="p">(</span>
+            <span class="n">policy</span><span class="p">,</span>
+            <span class="c1"># DummyVectorEnv([lambda: env for _ in range(1)]),</span>
+            <span class="c1"># SubprocVectorEnv([lambda: env for _ in range(10)]),</span>
+            <span class="n">SubprocVectorEnv</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="k">lambda</span><span class="p">:</span> <span class="n">env</span>
+                    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_jobs</span> <span class="k">if</span> <span class="n">n_jobs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">())</span>
+                <span class="p">]</span>
+            <span class="p">),</span>
+            <span class="n">exploration_noise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">collector</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">n_episode</span><span class="o">=</span><span class="n">n_episodes</span><span class="p">,</span> <span class="n">n_step</span><span class="o">=</span><span class="n">n_step</span><span class="p">,</span> <span class="n">render</span><span class="o">=</span><span class="n">render</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rews</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lens</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;rews&quot;</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;lens&quot;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rews</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">agents</span><span class="p">))]</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2023, Alexander Puck Neuwirth.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

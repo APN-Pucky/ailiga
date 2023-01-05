@@ -1,0 +1,6 @@
+ailiga.train.main
+=================
+
+.. currentmodule:: ailiga.train
+
+.. autofunction:: main
