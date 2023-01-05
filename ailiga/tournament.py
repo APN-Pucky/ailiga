@@ -13,12 +13,13 @@ from tianshou.policy import BasePolicy, DQNPolicy, MultiAgentPolicyManager, Rand
 
 from ailiga import env
 from ailiga.all_fighters import get_all_fighters, get_fighter_by_name
+from ailiga.APNPucky.RandomFigher.RandomFighter_v0 import RandomFighter_v0
 from ailiga.battle import Battle
 from ailiga.fighter import Fighter
 
 
-def _single_fight(lambda_env, agenti, agentj, n_episodes, n_step, i, j):
-    battle = Battle(lambda_env, [agenti, agentj])
+def _single_fight(lambda_env, agents, n_episodes, n_step, i, j):
+    battle = Battle(lambda_env, agents)
     rews = battle.fight(n_episodes, n_step)
     return i, j, rews
 
@@ -32,15 +33,22 @@ class Tournament:
         fighters,
         n_episodes=1,
         n_step=None,
+        fill=True,
     ):
         self.lambda_env = lambda_env
         # sort agents by name
         agents = sorted(fighters, key=lambda a: a.get_name())
-        self.agents = [a(self.lambda_env) for a in agents]
+        if isinstance(agents[0], type):
+            # agents are classes, not instances
+            self.agents = [a(self.lambda_env) for a in agents]
+        else:
+            self.agents = agents
+
         self.attacker_scores = np.zeros((len(self.agents), len(self.agents)))
         self.defender_scores = np.zeros((len(self.agents), len(self.agents)))
         self.n_episodes = n_episodes
         self.n_step = n_step
+        self.fill = fill
 
     def get_name(self):
         return env.get_env_name(self.lambda_env) + " x" + str(self.n_episodes)
@@ -53,13 +61,15 @@ class Tournament:
         :param n_step: number of steps per episode
         :return: list of rewards
         """
+        extra_agents = [RandomFighter_v0(self.lambda_env)] * (
+            len(self.lambda_env().agents) - len(self.agents)
+        )
         args = [
             {
                 "lambda_env": self.lambda_env,
                 "i": i,
                 "j": j,
-                "agenti": self.agents[i],
-                "agentj": self.agents[j],
+                "agents": [self.agents[i], self.agents[j], *extra_agents],
                 "n_episodes": self.n_episodes,
                 "n_step": self.n_step,
             }

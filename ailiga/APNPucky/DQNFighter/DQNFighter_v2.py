@@ -16,6 +16,7 @@ from torch.utils.tensorboard import SummaryWriter
 
 from ailiga.APNPucky.DQNFighter.DQNFighter_v0 import DQNFighter_v0
 from ailiga.APNPucky.DQNFighter.DQNFighter_v1 import DQNFighter_v1
+from ailiga.APNPucky.RandomFigher.RandomFighter_v0 import RandomFighter_v0
 from ailiga.fighter import Fighter
 from ailiga.trained_fighter import TrainedFighter
 
@@ -42,7 +43,14 @@ class DQNFighter_v2(DQNFighter_v1):
 
         # ======== Step 2: Agent setup =========
         # policy, optim, agents = _get_agents()
-        agents = [DQNFighter_v0(self.lambda_env).get_policy(), self.policy]
+        agents = [
+            DQNFighter_v0(self.lambda_env).get_policy(),
+            self.policy,
+            *[
+                RandomFighter_v0(self.lambda_env).get_policy()
+                for _ in range(len(self.env.agents) - 2)
+            ],
+        ]
         policy = MultiAgentPolicyManager(agents, self.env)
         agents = self.env.agents
 

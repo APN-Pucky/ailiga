@@ -47,7 +47,12 @@ class DQNFighter_v0(TrainedFighter):
 
     @classmethod
     def compatible_envs(cls):
-        return ["tictactoe_v3", "simple_spread_v2", "knights_archers_zombies_v10"]
+        return [
+            "tictactoe_v3",
+            "simple_spread_v2",
+            "knights_archers_zombies_v10",
+            "leduc_holdem_v4",
+        ]
 
     def __init__(self, lambda_env, savefile=None):
         super().__init__(lambda_env)

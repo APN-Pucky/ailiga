@@ -23,6 +23,7 @@ rlcard = "*"
 smpl_doc =">=1.1.1"
 smpl_io ="*"
 h5py ="*"
+pygame ="*"
 
 
 #gym = "<=0.21"

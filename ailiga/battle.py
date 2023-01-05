@@ -6,17 +6,31 @@ from tianshou.data import Collector
 from tianshou.env import DummyVectorEnv, RayVectorEnv, SubprocVectorEnv
 from tianshou.policy import BasePolicy, DQNPolicy, MultiAgentPolicyManager, RandomPolicy
 
+from ailiga import env as menv
+
 
 class Battle:
     """Runs a battle between two or more agents."""
 
     def __init__(self, lambda_env, agents):
         self.env = lambda_env()
-        self.agents = agents
+        self.lambda_env = lambda_env
+        if isinstance(agents[0], type):
+            # agents are classes, not instances
+            self.agents = [a(self.lambda_env) for a in agents]
+        else:
+            self.agents = agents
         self.policies = [a.get_policy() for a in self.agents]
         self.env.reset()
         self.rews = None
         self.lens = None
+        if len(self.env.agents) != len(self.agents):
+            raise ValueError(
+                "Agents do not match environment: "
+                + str(self.env.agents)
+                + " vs "
+                + str(self.agents)
+            )
 
     def fight(self, n_episodes=1, n_step=None, render=None, n_jobs=None):
         """
