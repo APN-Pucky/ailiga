@@ -24,6 +24,14 @@
 
    ailiga
 
+
+.. toctree::
+   :glob:
+   :maxdepth: 3
+   :caption: Season:
+
+   season/*
+
 .. toctree::
    :glob:
    :maxdepth: 3
