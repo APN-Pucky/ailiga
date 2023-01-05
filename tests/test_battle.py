@@ -5,7 +5,7 @@ from ailiga.APNPucky.DQNFighter.DQNFighter_v0 import DQNFighter_v0
 from ailiga.APNPucky.DQNFighter.DQNFighter_v1 import DQNFighter_v1
 from ailiga.APNPucky.DQNFighter.DQNFighter_v2 import DQNFighter_v2
 from ailiga.APNPucky.RandomFigher.RandomFighter_v0 import RandomFighter_v0
-from ailiga.Arena import Battle, Tournament
+from ailiga.battle import Battle
 
 
 def test_random_random_battle():
@@ -46,22 +46,5 @@ def test_dqn_random_battle():
     print(arena.fight(1000))
 
 
-def test_tournament():
-    def lenv():
-        return PettingZooEnv(tictactoe_v3.env())
-
-    tournament = Tournament(
-        lenv,
-        [
-            RandomFighter_v0(lenv),
-            DQNFighter_v0(lenv),
-            DQNFighter_v1(lenv),
-            DQNFighter_v2(lenv),
-        ],
-    )
-    print(tournament.fight(1000)[0])
-
-
 test_random_random_battle()
 test_dqn_random_battle()
-test_tournament()

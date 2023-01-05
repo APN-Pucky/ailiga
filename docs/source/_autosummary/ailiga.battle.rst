@@ -1,0 +1,28 @@
+ailiga.battle
+=============
+
+.. automodule:: ailiga.battle
+  
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:                                         
+      :template: custom-class-template.rst               
+   
+      Battle
+   
+   
+
+   
+   
+   

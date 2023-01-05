@@ -13,8 +13,8 @@ from tianshou.trainer import offpolicy_trainer
 from tianshou.utils import TensorboardLogger
 from tianshou.utils.net.common import Net, Recurrent
 
-from ailiga.Fighter import Fighter
-from ailiga.TrainedFighter import TrainedFighter
+from ailiga.fighter import Fighter
+from ailiga.trained_fighter import TrainedFighter
 
 
 class DRDQNFighter_v0(TrainedFighter):

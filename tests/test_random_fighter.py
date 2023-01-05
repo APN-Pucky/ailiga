@@ -5,7 +5,7 @@ from tianshou.env.pettingzoo_env import PettingZooEnv
 from ailiga.APNPucky.DQNFighter.DQNFighter_v0 import DQNFighter_v0
 from ailiga.APNPucky.PPOFighter.PPOFighter_v0 import PPOFighter_v0
 from ailiga.APNPucky.RandomFigher.RandomFighter_v0 import RandomFighter_v0
-from ailiga.Arena import Arena
+from ailiga.battle import Arena
 
 
 def test_train_cartpole():

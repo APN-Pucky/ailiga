@@ -9,13 +9,15 @@ from tianshou.env import DummyVectorEnv
 from tianshou.utils import TensorboardLogger
 from torch.utils.tensorboard import SummaryWriter
 
-from ailiga.Fighter import Fighter
+from ailiga import env
+from ailiga.fighter import Fighter
 
 
 class TrainedFighter(Fighter):
+    """A trained fighter."""
+
     logdir = "log"
     traindir = "trained"
-    user = None
     agentindex = None
 
     training_num = 10
@@ -25,6 +27,7 @@ class TrainedFighter(Fighter):
     test_envs = None
 
     def load(self, savefile=None):
+        """Load the policy from a file."""
         if savefile is None:
             savefile = self.get_default_savefile()
         if os.path.isfile(savefile):
@@ -33,10 +36,10 @@ class TrainedFighter(Fighter):
         else:
             return False
 
-    def get_user(self):
-        return self.user
-
     def get_default_savefile(self):
+        """Get the default savefile name."""
+        if self.user is None:
+            raise ValueError("user must be set")
         name = (
             self.traindir
             + "/"
@@ -51,6 +54,7 @@ class TrainedFighter(Fighter):
         return name
 
     def save(self, policy=None, savefile=None):
+        """Save the policy."""
         if savefile is None:
             savefile = self.get_default_savefile()
         if policy is None:
@@ -61,12 +65,19 @@ class TrainedFighter(Fighter):
             torch.save(self.policy.state_dict(), savefile)
 
     def reset(self):
+        """Reset the policy and the environment."""
         for layer in self.policy.children():
             if hasattr(layer, "reset_parameters"):
                 layer.reset_parameters()
 
-    def reward_metrix(self, rews):
+    def reward_metric(self, rews):
+        """Pick the reward of the agent we are training."""
         return rews[:, self.agentindex]
+
+    @classmethod
+    def train_all(cls):
+        for e in cls.compatible_envs():
+            cls(env.get_env(e)).train()
 
     def train(self, seed=None, reset=True):
         self.train_envs = DummyVectorEnv(

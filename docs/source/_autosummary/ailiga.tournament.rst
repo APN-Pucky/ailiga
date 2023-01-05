@@ -1,0 +1,36 @@
+ailiga.tournament
+=================
+
+.. automodule:: ailiga.tournament
+  
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+      :toctree:                                         
+   
+      main
+      tournament
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+      :toctree:                                         
+      :template: custom-class-template.rst               
+   
+      Tournament
+   
+   
+
+   
+   
+   

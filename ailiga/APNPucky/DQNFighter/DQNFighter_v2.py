@@ -16,8 +16,8 @@ from torch.utils.tensorboard import SummaryWriter
 
 from ailiga.APNPucky.DQNFighter.DQNFighter_v0 import DQNFighter_v0
 from ailiga.APNPucky.DQNFighter.DQNFighter_v1 import DQNFighter_v1
-from ailiga.Fighter import Fighter
-from ailiga.TrainedFighter import TrainedFighter
+from ailiga.fighter import Fighter
+from ailiga.trained_fighter import TrainedFighter
 
 
 class DQNFighter_v2(DQNFighter_v1):

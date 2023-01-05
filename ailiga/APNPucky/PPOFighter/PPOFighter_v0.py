@@ -20,11 +20,13 @@ from tianshou.utils.net.common import ActorCritic, Net
 from tianshou.utils.net.discrete import Actor, Critic
 from torch.utils.tensorboard import SummaryWriter
 
-from ailiga.Fighter import Fighter
-from ailiga.TrainedFighter import TrainedFighter
+from ailiga.APNPucky.RandomFigher.RandomFighter_v0 import RandomFighter_v0
+from ailiga.fighter import Fighter
+from ailiga.trained_fighter import TrainedFighter
 
 
 class PPOFighter_v0(TrainedFighter):
+    user = "APN-Pucky"
 
     # https://tianshou.readthedocs.io/en/master/tutorials/dqn.html
     buffer_size = 20_000
@@ -109,30 +111,27 @@ class PPOFighter_v0(TrainedFighter):
         self.policy = policy
         self.load(savefile)
 
-    def train(self, savefile=None):
-        if savefile is None:
-            savefile = self.get_default_savefile()
-        train_envs = DummyVectorEnv([self.lambda_env for _ in range(self.training_num)])
-        # test_envs = gym.make(args.task)
-        test_envs = DummyVectorEnv([self.lambda_env for _ in range(self.test_num)])
+    def train(self, savefile=None, seed=None, reset=True):
+        super().train(seed, reset)
 
-        # seed
-        seed = 1
-        np.random.seed(seed)
-        torch.manual_seed(seed)
-        train_envs.seed(seed)
-        test_envs.seed(seed)
+        agents = [
+            *[
+                RandomFighter_v0(self.lambda_env).get_policy()
+                for _ in range(len(self.env.agents) - 1)
+            ],
+            self.policy,
+        ]
+        self.agentindex = -1
+        policy = MultiAgentPolicyManager(agents, self.env)
+        agents = self.env.agents
 
         # collector
         train_collector = Collector(
-            self.policy,
-            train_envs,
-            VectorReplayBuffer(self.buffer_size, len(train_envs)),
+            policy,
+            self.train_envs,
+            VectorReplayBuffer(self.buffer_size, len(self.train_envs)),
         )
-        test_collector = Collector(self.policy, test_envs)
-
-        def save_best_fn(policy):
-            torch.save(policy.state_dict(), savefile)
+        test_collector = Collector(self.policy, self.test_envs)
 
         def stop_fn(mean_rewards):
             return mean_rewards >= self.reward_threshold
@@ -149,7 +148,8 @@ class PPOFighter_v0(TrainedFighter):
             self.batch_size,
             step_per_collect=self.step_per_collect,
             stop_fn=stop_fn,
-            save_best_fn=save_best_fn,
+            reward_metric=self.reward_metric,
+            save_best_fn=self.save,
             logger=self.get_logger(),
         )
         assert stop_fn(result["best_reward"])

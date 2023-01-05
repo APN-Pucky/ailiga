@@ -2,7 +2,7 @@ from pettingzoo.classic import rps_v2, tictactoe_v3
 from tianshou.env.pettingzoo_env import PettingZooEnv
 
 from ailiga.APNPucky.DRDQNFighter.DRDQNFighter_v0 import DRDQNFighter_v0
-from ailiga.Arena import Arena
+from ailiga.battle import Arena
 
 
 def test_train_tictactoe():

@@ -14,8 +14,8 @@ from tianshou.utils.net.common import Net
 from torch.utils.tensorboard import SummaryWriter
 
 from ailiga.APNPucky.RandomFigher.RandomFighter_v0 import RandomFighter_v0
-from ailiga.Fighter import Fighter
-from ailiga.TrainedFighter import TrainedFighter
+from ailiga.fighter import Fighter
+from ailiga.trained_fighter import TrainedFighter
 
 
 class DQNFighter_v0(TrainedFighter):
@@ -45,7 +45,8 @@ class DQNFighter_v0(TrainedFighter):
     n_step = 3
     target_update_freq = 320
 
-    def compatible_envs(self):
+    @classmethod
+    def compatible_envs(cls):
         return ["tictactoe_v3", "simple_spread_v2", "knights_archers_zombies_v10"]
 
     def __init__(self, lambda_env, savefile=None):
@@ -117,9 +118,6 @@ class DQNFighter_v0(TrainedFighter):
         def test_fn(epoch, env_step):
             policy.policies[self.env.agents[self.agentindex]].set_eps(self.test_eps)
 
-        def reward_metric(rews):
-            return rews[:, -1]
-
         result = offpolicy_trainer(
             policy=policy,
             train_collector=train_collector,
@@ -135,7 +133,7 @@ class DQNFighter_v0(TrainedFighter):
             save_best_fn=self.save,
             update_per_step=self.update_per_step,
             test_in_train=False,
-            reward_metric=reward_metric,
+            reward_metric=self.reward_metric,
             logger=self.get_logger(),
         )
         # return result, policy.policies[agents[1]]
