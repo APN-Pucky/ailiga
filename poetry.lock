@@ -957,25 +957,24 @@ ply = "*"
 
 [[package]]
 name = "pettingzoo"
-version = "1.21.0"
-description = "Gym for multi-agent reinforcement learning"
+version = "1.22.3"
+description = "Gymnasium for multi-agent reinforcement learning"
 category = "main"
 optional = false
-python-versions = ">=3.7, <3.11"
+python-versions = ">=3.7, <3.12"
 
 [package.dependencies]
-gym = ">=0.26.0"
+gymnasium = ">=0.26.0"
 numpy = ">=1.18.0"
 
 [package.extras]
-all = ["AutoROM", "bandit", "box2d-py (==2.3.5)", "chess (==1.7.0)", "codespell", "flake8", "hanabi-learning-environment (==0.0.4)", "isort", "magent (==0.2.4)", "multi-agent-ale-py (==0.1.11)", "pillow (>=8.0.1)", "pre-commit", "pygame (==2.1.0)", "pymunk (==6.2.0)", "pynput", "pytest", "pytest-cov", "rlcard (==1.0.5)", "scipy (>=1.4.1)"]
-atari = ["multi-agent-ale-py (==0.1.11)", "pygame (==2.1.0)"]
-butterfly = ["pygame (==2.1.0)", "pymunk (==6.2.0)"]
-classic = ["chess (==1.7.0)", "hanabi-learning-environment (==0.0.4)", "pygame (==2.1.0)", "rlcard (==1.0.5)"]
-magent = ["magent (==0.2.4)"]
-mpe = ["pygame (==2.1.0)"]
+all = ["AutoROM", "bandit", "box2d-py (==2.3.5)", "chess (==1.7.0)", "codespell", "flake8", "hanabi-learning-environment (==0.0.4)", "isort", "multi-agent-ale-py (==0.1.11)", "pillow (>=8.0.1)", "pre-commit", "pygame (==2.1.3.dev8)", "pymunk (==6.2.0)", "pynput", "pytest", "pytest-cov", "rlcard (==1.0.5)", "scipy (>=1.4.1)"]
+atari = ["multi-agent-ale-py (==0.1.11)", "pygame (==2.1.3.dev8)"]
+butterfly = ["pygame (==2.1.3.dev8)", "pymunk (==6.2.0)"]
+classic = ["chess (==1.7.0)", "hanabi-learning-environment (==0.0.4)", "pygame (==2.1.3.dev8)", "rlcard (==1.0.5)"]
+mpe = ["pygame (==2.1.3.dev8)"]
 other = ["pillow (>=8.0.1)"]
-sisl = ["box2d-py (==2.3.5)", "pygame (==2.1.0)", "scipy (>=1.4.1)"]
+sisl = ["box2d-py (==2.3.5)", "pygame (==2.1.3.dev8)", "scipy (>=1.4.1)"]
 tests = ["AutoROM", "bandit", "codespell", "flake8", "isort", "pre-commit", "pynput", "pytest", "pytest-cov"]
 
 [[package]]
@@ -2069,7 +2068,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<3.11"
-content-hash = "00dfa508e7c854891870e527f5222e425fed30ea2dbf03110aa8d0810d29ea06"
+content-hash = "6d00a6d39d565f5266605725edd6998cb19794fdc483d6fa232a6b0e1ef6b139"
 
 [metadata.files]
 absl-py = [
@@ -2586,6 +2585,7 @@ lazy-object-proxy = [
     {file = "lazy_object_proxy-1.9.0-cp39-cp39-win_amd64.whl", hash = "sha256:db1c1722726f47e10e0b5fdbf15ac3b8adb58c091d12b3ab713965795036985f"},
 ]
 livereload = [
+    {file = "livereload-2.6.3-py2.py3-none-any.whl", hash = "sha256:ad4ac6f53b2d62bb6ce1a5e6e96f1f00976a32348afedcb4b6d68df2a1d346e4"},
     {file = "livereload-2.6.3.tar.gz", hash = "sha256:776f2f865e59fde56490a56bcc6773b6917366bce0c267c60ee8aaf1a0959869"},
 ]
 llvmlite = [
@@ -2846,8 +2846,8 @@ pandoc = [
     {file = "pandoc-2.3.tar.gz", hash = "sha256:e772c2c6d871146894579828dbaf1efd538eb64fc7e71d4a6b3a11a18baef90d"},
 ]
 pettingzoo = [
-    {file = "PettingZoo-1.21.0-py3-none-any.whl", hash = "sha256:aa4472982f4119ae5ac10a9c10d7b2f13459a27c8b81c442f5ea6358f573f8d1"},
-    {file = "PettingZoo-1.21.0.tar.gz", hash = "sha256:28b2d34f66f5f93023cfdf9358bf02321b3fef00eca9621a65255ed55ff23bc0"},
+    {file = "PettingZoo-1.22.3-py3-none-any.whl", hash = "sha256:75bad0f05a0167f2c7a08bfc691b7e8f14f474bff5fce0306b27745f301b9472"},
+    {file = "PettingZoo-1.22.3.tar.gz", hash = "sha256:3e7892ea31a5ef7ebe446d1f91ce411c67b6eaa9a2c6d3d7c35209fd43486b4f"},
 ]
 pexpect = [
     {file = "pexpect-4.8.0-py2.py3-none-any.whl", hash = "sha256:0b48a55dcb3c05f3329815901ea4fc1537514d6ba867a152b581d69ae3710937"},
