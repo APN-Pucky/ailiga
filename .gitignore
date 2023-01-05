@@ -131,3 +131,8 @@ dmypy.json
 # ailiga
 log/
 docs/source/_autosummary
+
+ailiga/APNPucky/DQNFighter_v0
+ailiga/APNPucky/DQNFighter_v1
+ailiga/APNPucky/DQNFighter_v2
+ailiga/APNPucky/RandomFighter_v0
