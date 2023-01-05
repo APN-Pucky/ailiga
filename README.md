@@ -6,7 +6,7 @@
 
 * Monthly releases of session/tournament results
 * User folders
-* Strict versioning for reproducibility
+* Strict versioning for reproducibility (ocne a version is pushed, gitignore it)
 
 ## Installation
 
