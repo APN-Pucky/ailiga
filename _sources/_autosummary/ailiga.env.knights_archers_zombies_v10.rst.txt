@@ -1,0 +1,6 @@
+ailiga.env.knights\_archers\_zombies\_v10
+=========================================
+
+.. currentmodule:: ailiga.env
+
+.. autofunction:: knights_archers_zombies_v10

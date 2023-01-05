@@ -1,0 +1,6 @@
+ailiga.tournament.main
+======================
+
+.. currentmodule:: ailiga.tournament
+
+.. autofunction:: main

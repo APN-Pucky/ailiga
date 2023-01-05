@@ -1,0 +1,6 @@
+ailiga.env.rps\_v2
+==================
+
+.. currentmodule:: ailiga.env
+
+.. autofunction:: rps_v2
