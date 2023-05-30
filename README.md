@@ -5,12 +5,12 @@
 
 * Monthly releases of seasons/tournament results
 * User folders
-* Strict versioning for reproducibility (ocne a version is pushed, gitignore it)
+* Strict versioning for reproducibility (once a version is pushed, gitignore it)
 
 ## Installation
 
 ```sh
-git clone THIS_PROJECT_URL
+git clone https://github.com/APN-Pucky/ailiga.git
 poerty install
 poetry shell
 ```
