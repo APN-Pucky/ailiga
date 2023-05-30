@@ -1,5 +1,5 @@
 # AILiga
-[![PyPI version][pypi image]][pypi link] [![PyPI version][pypi versions]][pypi link]  ![downloads](https://img.shields.io/pypi/dm/ailiga.svg) [![Documentation Status](https://readthedocs.org/projects/ailiga/badge/?version=stable)](https://ailiga.readthedocs.io/)
+[![PyPI version][pypi image]][pypi link] [![PyPI version][pypi versions]][pypi link] [![Coverage Status](https://coveralls.io/repos/github/APN-Pucky/ailiga/badge.svg?branch=master)](https://coveralls.io/github/APN-Pucky/ailiga?branch=master)  ![downloads](https://img.shields.io/pypi/dm/ailiga.svg) [![Documentation Status](https://readthedocs.org/projects/ailiga/badge/?version=stable)](https://ailiga.readthedocs.io/)
 
 ## Goals
 
