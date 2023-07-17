@@ -2907,18 +2907,19 @@ test = ["pytest"]
 
 [[package]]
 name = "supersuit"
-version = "3.7.1"
+version = "3.8.1"
 description = "Wrappers for Gymnasium and PettingZoo"
 optional = false
 python-versions = ">=3.7, <3.12"
 files = [
-    {file = "SuperSuit-3.7.1-py3-none-any.whl", hash = "sha256:4678c9ac2df3f63e3f25ded2c1be2c6ed26fa8bf02a5b0ca5b00973b586c46dd"},
-    {file = "SuperSuit-3.7.1.tar.gz", hash = "sha256:443781a19bb0b3d3ed76c5a3654869afa3f119820ec3def1c09e3e2aa8b57c0f"},
+    {file = "SuperSuit-3.8.1-py3-none-any.whl", hash = "sha256:e9b4bfb3f95b433ecff4eca72fae2ecf2768395bd2668d88fcfefcd08ccea3b5"},
+    {file = "SuperSuit-3.8.1.tar.gz", hash = "sha256:80bf18bf4c74676e2a498bd88ac056af5b586b197663cd888c6c3dd6e80eda5e"},
 ]
 
 [package.dependencies]
 gymnasium = ">=0.26.0"
 numpy = ">=1.19.0"
+tinyscaler = ">=1.2.5"
 
 [[package]]
 name = "tensorboard"
@@ -3007,6 +3008,34 @@ atari = ["atari-py", "opencv-python"]
 dev = ["doc8", "envpool (>=0.5.3)", "flake8", "flake8-bugbear", "isort", "jinja2 (<3.1)", "mypy", "networkx", "nni (>=2.3,<3.0)", "pettingzoo (>=1.17)", "pillow", "pydocstyle", "pygame (>=2.1.0)", "pymunk (>=6.2.1)", "pytest", "pytest-cov", "pytorch-lightning", "ray (>=1.0.0)", "scipy", "sphinx (<4)", "sphinx-rtd-theme", "sphinxcontrib-bibtex", "wandb (>=0.12.0)", "yapf"]
 mujoco = ["mujoco-py"]
 pybullet = ["pybullet"]
+
+[[package]]
+name = "tinyscaler"
+version = "1.2.6"
+description = "A tiny, simple image scaler."
+optional = false
+python-versions = "<3.12,>=3.7"
+files = [
+    {file = "tinyscaler-1.2.6-cp310-cp310-macosx_11_0_x86_64.whl", hash = "sha256:452c61686ba8b24e8cb6f46e7028cc821e8a110a0b13b82eb699409861299453"},
+    {file = "tinyscaler-1.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:a00f8a23164991fd4c03befae770196e5da8ca270acf1ce759064c969aefde86"},
+    {file = "tinyscaler-1.2.6-cp310-cp310-win_amd64.whl", hash = "sha256:23f0df2adf4e77c28420cd530a9b0dfb826ceac1c9bd3f81366b5c266d44b12b"},
+    {file = "tinyscaler-1.2.6-cp311-cp311-macosx_10_9_universal2.whl", hash = "sha256:10584f250852c7716971a5dada128d184dc9f3416507f2fb018d955fb9f8b252"},
+    {file = "tinyscaler-1.2.6-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e8848685e83c83b4e72b9c4a85a6470757f0cd71521e4f40582d0db4aa6d6ce4"},
+    {file = "tinyscaler-1.2.6-cp311-cp311-win_amd64.whl", hash = "sha256:56d59690aa72c22150f42e78aa28777dad406bb9524f923501e1ac7285d222d3"},
+    {file = "tinyscaler-1.2.6-cp37-cp37m-macosx_10_15_x86_64.whl", hash = "sha256:e2c8e297d97f6aa983da50e3ef6bfb3589497f5c507ec2e889e3a994572ce47c"},
+    {file = "tinyscaler-1.2.6-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:9913f51e2991484c824eddfb26de2d0c062803d420ddf564dcb0f942c286680e"},
+    {file = "tinyscaler-1.2.6-cp37-cp37m-win_amd64.whl", hash = "sha256:0b608f99e4365e35334b10174e5283d69cad344759a2c36a787c423d613025a0"},
+    {file = "tinyscaler-1.2.6-cp38-cp38-macosx_10_15_x86_64.whl", hash = "sha256:f0c6bbf2e6007725fa5568b39e85cf83efd38630321a86e7ea2d1cc822a7d015"},
+    {file = "tinyscaler-1.2.6-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ff266026a22dac0acde70d7855d464946901a838435f19bb16472523e7f5aea8"},
+    {file = "tinyscaler-1.2.6-cp38-cp38-win_amd64.whl", hash = "sha256:905235df7e50685ef72319d805a5370f43b4627a18673e68faf5e0475cc1159e"},
+    {file = "tinyscaler-1.2.6-cp39-cp39-macosx_11_0_x86_64.whl", hash = "sha256:6ea3a127acec8abea73c7c95de7b9e7e07e2b7ed6e3b79bbd21cb08702247b60"},
+    {file = "tinyscaler-1.2.6-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:25c00bc240d7789f9d04ef7a1d3844b72588ffd2e609f44f0d8de8494dd0f1b3"},
+    {file = "tinyscaler-1.2.6-cp39-cp39-win_amd64.whl", hash = "sha256:d588b3186c9bb5c05e748cb8aeb3afd8089f468bf524b447e0206d4146fc79e7"},
+    {file = "tinyscaler-1.2.6.tar.gz", hash = "sha256:38c257d63aca414fa28b57b11bae3c04928d55a0a235914045f3c2deef295f03"},
+]
+
+[package.dependencies]
+numpy = ">=1.21.0"
 
 [[package]]
 name = "toml"
