@@ -2140,13 +2140,13 @@ files = [
 
 [[package]]
 name = "pyglet"
-version = "2.0.8"
+version = "2.0.9"
 description = "Cross-platform windowing and multimedia library"
 optional = false
 python-versions = "*"
 files = [
-    {file = "pyglet-2.0.8-py3-none-any.whl", hash = "sha256:f866895704e8fe63f836eac17740b3746b34e4c2e9f6ef567b35a4b69bca457b"},
-    {file = "pyglet-2.0.8.zip", hash = "sha256:c5cf9a132c1c01a67f54bf79f5a4cd8b4466d426f56852033078a3f67cd883c6"},
+    {file = "pyglet-2.0.9-py3-none-any.whl", hash = "sha256:8520b22dde75f47167e1fedeed58ac0bb0c890c0dca17d8528427d6b318cd9cc"},
+    {file = "pyglet-2.0.9.zip", hash = "sha256:a0922e42f2d258505678e2f4a355c5476c1a6352c3f3a37754042ddb7e7cf72f"},
 ]
 
 [[package]]
@@ -3561,4 +3561,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.7,<3.11"
-content-hash = "237a022b5bea39083e5442983e9908ef8f3ad0c2e73f34f735fc89bc314e530a"
+content-hash = "4bc193732b5ead575114dc1287a6c5a4b4544aeaf285b791eab91798355b9a57"
