@@ -57,4 +57,4 @@ class RandomIndexFighter_v0(Fighter):
 
     def __init__(self, env):
         super().__init__(env)
-        self.policy = RandomIndexPolicy(range=np.random.randint(100))
+        self.policy = RandomIndexPolicy(range=100)
